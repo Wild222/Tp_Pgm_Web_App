@@ -30,7 +30,7 @@
 </head>
 <body>
 
-<a href="control/testServlet">Hello Servlet</a>
+<a href="control/testServlet">Liste des animaux (Annabel) </a>
 <h1><%= "Bienvenue sur notre site de produits pour animaux" %>
 </h1>
     <div align="center">
