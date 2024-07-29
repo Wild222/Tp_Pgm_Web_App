@@ -14,3 +14,4 @@ CREATE TABLE TypeAnimal (
                             prixAnimal DOUBLE NOT NULL
 );
 
+select * from TypeAnimal;

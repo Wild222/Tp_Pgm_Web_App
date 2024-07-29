@@ -20,7 +20,7 @@ public class testServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Database connection setup
-        TypeAnimal animal = new TypeAnimal("","",0);
+       // TypeAnimal animal = new TypeAnimal("","",0);
 
         String jdbcURL = "jdbc:mariadb://mysql-bil.alwaysdata.net:3306/bil_animaux";
         String jdbcUsername = "bil_bel";
@@ -34,7 +34,7 @@ public class testServlet extends HttpServlet {
             String sql = "SELECT id, nom, sexe, prixAnimal FROM TypeAnimal";
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
-
+                TypeAnimal animal = new TypeAnimal();
                 animal.setId(resultSet.getInt("id"));
                 animal.setNom(resultSet.getString("nom"));
                 animal.setSexe(resultSet.getString("sexe"));
