@@ -5,12 +5,12 @@
          version="5.0">
 
     <servlet>
-        <servlet-name>testServlet</servlet-name>
-        <servlet-class>control.testServlet</servlet-class>
+        <servlet-name>AfficherAnimalServlet</servlet-name>
+        <servlet-class>control.AfficherAnimalServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>testServlet</servlet-name>
-        <url-pattern>/control/testServlet</url-pattern>
+        <servlet-name>AfficherAnimalServlet</servlet-name>
+        <url-pattern>/control/AfficherAnimalServlet</url-pattern>
     </servlet-mapping>
     <jsp-config>
         <taglib>
