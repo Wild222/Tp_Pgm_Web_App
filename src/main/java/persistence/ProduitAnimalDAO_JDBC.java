@@ -1,6 +1,5 @@
 package persistence;
 
-import datastore.DB_Connector;
 import model.ProduitAnimal;
 
 import java.sql.Connection;
@@ -21,7 +20,7 @@ public class ProduitAnimalDAO_JDBC implements IProduitAnimalDAO {
 
     public ProduitAnimalDAO_JDBC() {
         //Connexion à la basse de donnée
-        this.connection = DB_Connector.getInstance().getConnection();
+        this.connection = DB_ConnectorOld.getInstance().getConnection();
     }
     
     @Override

@@ -20,8 +20,10 @@ public class AfficherAnimalServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Database connection setup
-       // TypeAnimal animal = new TypeAnimal("","",0);
 
+         //declarer une instance de la classe VenteAnimalService
+        //appeler les méthodes dans cette classe (afficher détail, ajouter au panier etc..)
+        //
         String jdbcURL = "jdbc:mariadb://mysql-bil.alwaysdata.net:3306/bil_animaux";
         String jdbcUsername = "bil_bel";
         String jdbcPassword = "cricket123456**";

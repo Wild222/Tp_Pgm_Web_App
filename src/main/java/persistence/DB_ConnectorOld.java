@@ -1,4 +1,4 @@
-package datastore;
+package persistence;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 //Singleton design pattern
-public class DB_Connector {
+public class DB_ConnectorOld {
 
-    public static DB_Connector settings = null;
+    public static DB_ConnectorOld settings = null;
 
     protected String DB_HOST = null;
     protected String DB_NAME = null;
@@ -19,7 +19,7 @@ public class DB_Connector {
 
     protected Connection connection = null;
 
-    private DB_Connector() {
+    private DB_ConnectorOld() {
         loadDBProperties();
         try {
             System.out.println("ConnectionString = "+this.DB_URL);
@@ -29,10 +29,10 @@ public class DB_Connector {
         }
     }
 
-    public static DB_Connector getInstance() {
-        if (DB_Connector.settings == null)
-            DB_Connector.settings = new DB_Connector();
-        return DB_Connector.settings;
+    public static DB_ConnectorOld getInstance() {
+        if (DB_ConnectorOld.settings == null)
+            DB_ConnectorOld.settings = new DB_ConnectorOld();
+        return DB_ConnectorOld.settings;
 
     }
 
@@ -51,7 +51,7 @@ public class DB_Connector {
         try (FileInputStream fis = new FileInputStream(fileName)) {
             props.load(fis);
         } catch (IOException ex) {
-            System.out.println(DB_Connector.class.getName());
+            System.out.println(DB_ConnectorOld.class.getName());
             System.out.println(ex.getMessage());
         }
         this.DB_HOST = props.getProperty("DB_HOST");
