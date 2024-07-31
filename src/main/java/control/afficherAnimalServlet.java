@@ -51,7 +51,7 @@ public class AfficherAnimalServlet extends HttpServlet {
         }
 
         request.setAttribute("animaux", listeAnimaux);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/testAnimal.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/testAffiche.jsp");
         dispatcher.forward(request, response);
     }
 
