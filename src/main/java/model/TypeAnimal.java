@@ -6,15 +6,36 @@ public class TypeAnimal {
     private String sexe;
    // private int quantite;
     private double prixAnimal;
+    private String imageUrl;
 
-    public TypeAnimal(String nom,  String sexe,double prixAnimal) {
+    public TypeAnimal(String nom,  String sexe,double prixAnimal, String imageUrl) {
         this.nom = nom;
         this.sexe = sexe;
         this.prixAnimal = prixAnimal;
+        this.imageUrl = imageUrl;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public TypeAnimal() {
 
+    }
+
+    @Override
+    public String toString() {
+        return "TypeAnimal{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", sexe='" + sexe + '\'' +
+                ", prixAnimal=" + prixAnimal +
+                ", imageUrl='" + imageUrl + '\'' +
+                '}';
     }
 
     public int getId() {
@@ -49,13 +70,4 @@ public class TypeAnimal {
         this.prixAnimal = prixAnimal;
     }
 
-    @Override
-    public String toString() {
-        return "TypeAnimal{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
-                ", sexe='" + sexe + '\'' +
-                ", prixAnimal=" + prixAnimal +
-                '}';
-    }
 }

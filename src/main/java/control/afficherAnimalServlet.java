@@ -33,7 +33,7 @@ public class AfficherAnimalServlet extends HttpServlet {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
             Statement statement = connection.createStatement();
-            String sql = "SELECT id, nom, sexe, prixAnimal FROM TypeAnimal";
+            String sql = "SELECT id, nom, sexe, prixAnimal,imageUrl FROM TypeAnimal";
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
                 TypeAnimal animal = new TypeAnimal();
@@ -41,6 +41,7 @@ public class AfficherAnimalServlet extends HttpServlet {
                 animal.setNom(resultSet.getString("nom"));
                 animal.setSexe(resultSet.getString("sexe"));
                 animal.setPrixAnimal(resultSet.getDouble("prixAnimal"));
+                animal.setImageUrl(resultSet.getString("imageUrl"));
                 listeAnimaux.add(animal);
                 System.out.println("Retrieved animal: " + animal);            }
            resultSet.close();

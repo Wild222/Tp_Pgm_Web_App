@@ -55,25 +55,29 @@
 <body>
 <div id="dogCardsContainer">
     <!-- Static Card Template -->
-    <div class="card">
+   <%-- <div class="card">
         <img class="descript-dest" src="../images/labradorR.jpeg" alt="Présentation">
         <p id="chien box"></p>
         <h5></h5>
-    </div>
+    </div>--%>
     <!-- End Static Card Template -->
 
     <!-- Dynamically Generated Cards -->
     <c:forEach var="animal" items="${animaux}">
         <div class="card">
-            <img class="card-img-top" src="../images/labradorR.jpeg" alt="Présentation">
-            <p class="descript-dest"><c:out value="${animal.nom}"/> (<c:out value="${animal.sexe}"/>) - Prix: <c:out value="${animal.prixAnimal}"/></p>
+            <%--<img class="card-img-top" src="../images/labradorR.jpeg" alt="Présentation">--%>
+            <img class="card-img-top" src="${animal.imageUrl}"/>
+            <p class="descript-dest"><c:out value="${animal.nom}"/>
+                (<c:out value="${animal.sexe}"/>) <br>
+                </bf> Prix: <c:out value="${animal.prixAnimal}"/></p>
             <h5>Ajouter au panier</h5>
         </div>
-        <div class="card mb-3 p-2">
+        <%--<div class="card mb-3 p-2">
             <img class="chiens box"  src="../images/labradorR.jpeg" alt="presentation 2" style="height:300px; ">
             <h4>Labrador Golden</h4>
             <p class="descript-dest">Chien calme , parfait pour enfants</p>
-        </div>
+        </div>--%>
+
     </c:forEach>
     <!-- End Dynamically Generated Cards -->
 </div>
