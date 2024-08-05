@@ -42,14 +42,13 @@
 
         </div>
 
-        <form action="afficherAnimal.jsp" name="maFormAnimal">
+        <form action="control/AfficherAnimalServlet" name="maFormAnimal">
             <div class="container">
                 <img src="images/ima_1.jpeg" width="650" height="350" alt="ima_1"/>
                 <div class="text-container">
                     <h3>Animaux en stock :</h3>
                     <ul>
                         <li>Chien</li>
-                        <li><a id="chien" href="detailchien" alt = "detailchien">Description</a></li>
                         <li>Chat</li>
                         <li>Cheval</li>
                         <li>Oiseau</li>

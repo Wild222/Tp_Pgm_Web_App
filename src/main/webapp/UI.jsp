@@ -19,7 +19,7 @@
         }
         .container img {
             margin: 20px;
-         
+
         }
         .text-container {
             max-width: 300px; /* Adjust as needed */
@@ -40,7 +40,7 @@
 <div>
 
     <div align="center">
-        <h1>Bienvenuee à tous</h1>
+        <h1>Bienvenu à tous</h1>
         <p>
         <h3>
             Vous trouverez sur notre site une gamme de produits pour votre animal de compagnie. <br>
@@ -49,26 +49,27 @@
         <p/>
         <div/>
 
-        <form action="JSP/afficherAnimal.jsp" name="maFormAnimal">
+        <form action="testAfficherAnimal.jsp" name="maFormAnimal">
             <div class="container">
                 <img src="./image/ima_1.jpeg" width="800" height="350" alt="ima_1"/>
-                <div class="text-container">                   
+                <div class="text-container">
                     <h3>Voici quels types d'animaux seront disponibles pour vous :</h3>
                     <ul>
                         <li>Chien</li>
                         <li>Chat</li>
                         <li>Cheval</li>
                         <li>Oiseau</li>
+
                     </ul>
                     <input type="submit" value="Appuyer ICI" name="typeAnimal" />
                 </div>
             </div>
         </form>
 
-        <form action="controler/afficherProduitServlet" name="maFormProduit">
+        <form action="JSP/afficherProduit.jsp" name="maFormProduit">
             <div class="container-reverse">
                 <img src="./image/ima_2.jpeg" width="800" height="350" alt="ima_2"/>
-                <div class="text-container">                 
+                <div class="text-container">
                     <h3>Voici quels types de produits seront disponibles pour vous :</h3>
                     <ul>
                         <li>Nourriture pour chien, chat, souris, etc.</li>

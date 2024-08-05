@@ -1,4 +1,6 @@
-Oui, dans une architecture bien structurée de type MVC (Modèle-Vue-Contrôleur), la classe DAO (Data Access Object) est responsable de la gestion de la connexion à la base de données et de l'exécution des opérations CRUD (Créer, Lire, Mettre à jour, Supprimer). Le DAO abstrait les détails de l'accès aux données d'une base de données ou d'un autre mécanisme de persistance, fournissant une interface simple à utiliser pour le reste de l'application.
+Oui, dans une architecture bien structurée de type MVC (Modèle-Vue-Contrôleur), la classe DAO (Data Access Object) est responsable de la gestion
+de la connexion à la base de données et de l'exécution des opérations CRUD (Créer, Lire, Mettre à jour, Supprimer). Le DAO abstrait les détails
+de l'accès aux données d'une base de données ou d'un autre mécanisme de persistance, fournissant une interface simple à utiliser pour le reste de l'application.
 
 Voici une explication plus détaillée des rôles et des interactions au sein d'une architecture MVC, en se concentrant particulièrement sur l'interaction des servlets avec les classes DAO et de service :
 

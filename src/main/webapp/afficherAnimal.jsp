@@ -1,76 +1,74 @@
-<%-- 
-    Document   : afficherAnimal
-    Created on : 16 juil. 2024, 14:07:38
-    Author     : gabla
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Page Animal</title>
+<head>
+    <title>Cartes avec animaux</title>
+
         <style>
-            .tooltip-trigger {
-                position: relative;
-                display: inline-block;
+        body {
+            padding: 20px; /* Adds padding around the entire page content */
+            background-color: #f6f7f8; /* Light grey background for a soft contrast */
+        }
+
+            #dogCardsContainer {
+                display: flex; /* Enables Flexbox for the container */
+                flex-wrap: wrap; /* Allows items to wrap onto multiple lines */
+                justify-content: space-between; /* Ensures equal spacing between cards */
             }
 
-            .tooltip-content {
-                visibility: hidden;
-                background-color: black;
-                color: #fff;
+            .card {
+                border: 1px solid #ddd; /* Softer border color */
+                border-radius: 10px; /* Rounded corners for a softer look */
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Enhanced shadow for depth */
+                margin-bottom: 30px; /* Increased bottom margin for spacing */
+                width: calc(33% - 40px); /* Adjusted width to allow for margins and padding */
+                background-color: #fff; /* White background for the cards */
+                padding: 20px; /* Added padding inside the cards for content */
+                transition: transform 0.3s ease-in-out; /* Smooth transition for hover effect */
+            }
+
+            .card:hover {
+                transform: translateY(-5px); /* Slightly lift the card on hover */
+            }
+
+            .card-img-top {
+                width: 100%;
+                height: auto;
+            }
+
+               .descript-dest{
+                font-size: 18px; /* Increased font size for better readability */
+                color: #666; /* Darker text color for contrast */
+                margin: 15px 0; /* Increased margin for spacing */
+            }
+
+            h5 {
                 text-align: center;
-                padding: 5px 0;
-                border-radius: 6px;
-                position: absolute;
-                z-index: 1;
-                bottom: 125%; /* Position the tooltip above the trigger */
-                left: 50%;
-                margin-left: -60px; /* Use half of the width to center the tooltip */
-                opacity: 0;
-                transition: opacity 0.3s;
+                background-color: #e9ecef; /* Lighter background color for the button */
+                padding: 12px 20px; /* Increased padding for a bigger button area */
+                cursor: pointer;
             }
+    </style>
 
-            .tooltip-trigger:hover .tooltip-content {
-                visibility: visible;
-                opacity: 1;
-            }
+</head>
+<body>
+<div id="dogCardsContainer">
+    <!-- Dynamically Generated Cards -->
+    <c:forEach var="animal" items="${animaux}">
+        <div class="card">
+            <%--<img class="card-img-top" src="../images/labradorR.jpeg" alt="Présentation">--%>
 
-        </style>
-    </head>
-    <body>
-      <h1>Animaux disponibles</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Description</th>
-                <th>Prix</th>
-                <th>Quantité</th>
-                <th>Ajouter au Panier</th>
-            </tr>
-        </thead>
-        <tbody>
-            <c:forEach var="produit" items="${produits}">
-                <tr>
-                    <td>${produit.nom}</td>
-                    <td>${produit.description}</td>
-                    <td>${produit.prix}</td>
-                    <td>${produit.quantite}</td>
-                    <td>
-                        <form name="shoppingForm" action="AfficherProduitServlet" method="POST">
-                            <input type="hidden" name="produitId" value="${produit.id}">
-                            <b>Quantité: </b><input type="text" name="qty" size="3" value="1">
-                            <input type="hidden" name="action" value="ADD">
-                            <input type="submit" name="Submit" value="Ajouter au panier">
-                        </form>
-                    </td>
-                </tr>
-            </c:forEach>
-        </tbody>
-    </table>
+            <img class="card-img-top" src="${animal.imageUrl}"/>
+            <p class="descript-dest"><c:out value="${animal.nom}"/>
+                (<c:out value="${animal.sexe}"/>) <br>
+                </bf> Prix: <c:out value="${animal.prixAnimal}"/></p>
+            <h5>Ajouter au panier</h5>
+        </div>
+
+    </c:forEach>
+
     <a href="afficherPanier.jsp">Aller au panier</a>
-    </body>
+    <!-- End Dynamically Generated Cards -->
+</div>
+</body>
 </html>
