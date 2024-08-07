@@ -33,7 +33,8 @@
 
             .card-img-top {
                 width: 100%;
-                height: auto;
+                height: 60%;
+                border-radius: 20px 0px 20px 0px;
             }
 
                .descript-dest{
@@ -59,10 +60,12 @@
             <%--<img class="card-img-top" src="../images/labradorR.jpeg" alt="Présentation">--%>
 
             <img class="card-img-top" src="${animal.imageUrl}"/>
-            <p class="descript-dest"><c:out value="${animal.nom}"/>
+            <p class="descript-dest">
+                <c:out value="${animal.nom}"/>
                 (<c:out value="${animal.sexe}"/>) <br>
                 </bf> Prix: <c:out value="${animal.prixAnimal}"/></p>
-            <h5>Ajouter au panier</h5>
+
+                <input type="submit" value="Ajouter au panier" name="ADD" />
         </div>
 
     </c:forEach>

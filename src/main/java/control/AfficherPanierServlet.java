@@ -43,10 +43,10 @@ public class AfficherPanierServlet extends HttpServlet {
             int delIndex = Integer.parseInt(request.getParameter("delindex"));
             shoppingCart.remove(delIndex);
         }
-        TypeAnimalDAO_JDBC typeAnimalDAO = new TypeAnimalDAO_JDBC();
-        List<TypeAnimal> types = typeAnimalDAO.afficherTypeAnimal();
-        request.setAttribute("types", types);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/JSP/afficherPanier.jsp");
-        dispatcher.forward(request, response);
+//        TypeAnimalDAO_JDBC typeAnimalDAO = new TypeAnimalDAO_JDBC();
+//        List<TypeAnimal> types = typeAnimalDAO.afficherTypeAnimal();
+//        request.setAttribute("types", types);
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("/JSP/afficherPanier.jsp");
+//        dispatcher.forward(request, response);
     }
 }
