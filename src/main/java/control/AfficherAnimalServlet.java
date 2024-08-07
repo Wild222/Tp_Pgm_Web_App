@@ -27,6 +27,8 @@ public class AfficherAnimalServlet extends HttpServlet {
             TypeAnimalDAO_JDBC afficherAnimal = new TypeAnimalDAO_JDBC(connection);
             List<TypeAnimal> listeAnimaux = afficherAnimal.afficherTypeAnimal();
 
+            // Ajouter la liste d'animaux au contexte HTTP
+            request.setAttribute("listeAnimaux", listeAnimaux);
             request.setAttribute("animaux", listeAnimaux);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/afficherAnimal.jsp");
             dispatcher.forward(request, response);
