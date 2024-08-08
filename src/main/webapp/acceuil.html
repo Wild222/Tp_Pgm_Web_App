@@ -2,30 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/acceuil.css">
     <title>Accueuil</title>
-    <style>
-        .container {
-            display: flex;
-            align-items: flex-start;
-        }
-        .container img {
-            margin: 20px;
-
-        }
-        .text-container {
-            max-width: 300px; /* Adjust as needed */
-            margin-top: 50px
-        }
-        .container-reverse {
-            display: flex;
-            flex-direction: row-reverse;
-            align-items: flex-start;
-        }
-        .container-reverse img {
-            margin-left: 20px;
-            margin-right: 0;
-        }
-    </style>
 </head>
 <body>
 
@@ -45,7 +23,7 @@
 
 <form action="control/AfficherAnimalServlet" name="maFormAnimal">
     <div class="container">
-        <img src="images/ima_1.jpeg" width="650" height="350" alt="ima_1"/>
+        <img class="image" src="images/ima_1.jpeg" width="650" height="350" alt="ima_1"/>
         <div class="text-container">
             <h3>Animaux en stock :</h3>
             <ul>
@@ -63,7 +41,7 @@
 
 <form action="JSP/afficherProduit.jsp" name="maFormProduit">
     <div class="container-reverse">
-        <img src="images/ima_2.jpeg" width="800" height="350" alt="ima_2"/>
+        <img class="image" src="images/ima_2.jpeg" width="800" height="350" alt="ima_2"/>
         <div class="text-container">
             <h3>Voici quels types de produits seront disponibles pour vous :</h3>
             <ul>

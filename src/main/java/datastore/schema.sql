@@ -15,4 +15,3 @@ CREATE TABLE TypeAnimal (
                             imageUrl varchar(255)
 );
 
-select * from TypeAnimal;

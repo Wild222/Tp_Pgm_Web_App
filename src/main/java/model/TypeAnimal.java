@@ -4,7 +4,7 @@ public class TypeAnimal {
     private int id; 
     private String nom;
     private String sexe;
-   // private int quantite;
+//    private int quantite;
     private double prixAnimal;
     private String imageUrl;
 

@@ -1,18 +1,40 @@
-<%-- 
-    Document   : Checkout
-    Created on : 16 juil. 2024, 15:07:55
-    Author     : gabla
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
+<%@ page session="true" import="java.util.*, model.TypeAnimal" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Payer votre Commande ici!!</h1>
-    </body>
+<head>
+    <title>Checkout Animaux</title>
+</head>
+<body bgcolor="#33CCFF">
+<font face="Times New Roman,Times" size=+3>
+    Checkout Animaux
+</font>
+<hr>
+<p>
+
+<table border="1">
+    <tr>
+        <th>Nom</th>
+        <th>Sexe</th>
+        <th>Prix</th>
+        <th>Quantité</th>
+    </tr>
+    <c:forEach var="anOrder" items="${sessionScope.shoppingcart}" varStatus="status">
+        <tr>
+            <td>${anOrder.nom}</td>
+            <td>${anOrder.sexe}</td>
+            <td>${anOrder.prixAnimal}</td>
+            <td>${anOrder.quantity}</td>
+        </tr>
+    </c:forEach>
+
+    <tr>
+        <td colspan="3"><b>Total</b></td>
+        <td><b>${sessionScope.amount}</b></td>
+        <td></td>
+    </tr>
+</table>
+
+<p>
+    <a href="EShop.jsp">Continuer à magasiner!</a>
+</body>
 </html>

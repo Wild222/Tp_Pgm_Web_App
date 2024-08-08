@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    align-items: flex-start;
+}
+.container img {
+    margin: 20px;
+    border-radius: 10px;
+}
+.text-container {
+    max-width: 300px; /* Adjust as needed */
+    margin-top: 50px
+}
+.container-reverse {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+}
+.container-reverse img {
+    margin-left: 20px;
+    margin-right: 0;
+    border-radius: 10px;
+}

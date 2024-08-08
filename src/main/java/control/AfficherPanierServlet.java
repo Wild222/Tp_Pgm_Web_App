@@ -1,52 +1,50 @@
 package control;
 
+import datastore.DB_Connector;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.ProduitAnimal;
 import model.TypeAnimal;
-import persistence.TypeAnimalDAO_JDBC;
+import org.mariadb.jdbc.Connection;
+import persistence.TypeAnimalDAO_JDBC;  // Assurez-vous que cette classe existe pour interagir avec la base de données
 
 import java.io.IOException;
-import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
+/*
+Logique de la Servlet AfficherPanierServlet
 
+Récupérer le panier :
+Si vous utilisez une session, récupérez le panier depuis la session de l'utilisateur.
+Sinon, vous pourriez avoir un mécanisme de stockage du panier côté client (cookies, stockage local) ou dans une base de données avec un identifiant unique.
+Préparer les données :
+Calculez le total du panier.
+Formatez les informations sur les produits (nom, prix, quantité, image éventuellement) pour l'affichage.
+Envoyer les données à la JSP :
+Utilisez un objet request.setAttribute() pour stocker les données du panier.
+Utilisez request.getRequestDispatcher("afficherPanier.jsp").forward(request, response); pour transférer le contrôle à la JSP.
+ */
+@WebServlet("/AfficherPanierServlet")
 public class AfficherPanierServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Récupérer la liste du panier depuis la session
         HttpSession session = request.getSession();
-        List<TypeAnimal> shoppingCart = (List<TypeAnimal>) session.getAttribute("shoppingcart");
-        if (shoppingCart == null) {
-            shoppingCart = new ArrayList<>();
-            session.setAttribute("shoppingcart", shoppingCart);
+        List<String> panier = (List<String>) session.getAttribute("panier");
+        if (panier == null) {
+            panier = new ArrayList<>();
         }
-        String action = request.getParameter("action");
-        if ("ADD".equals(action)) {
-            String produitId = request.getParameter("id");
-            int qty = Integer.parseInt(request.getParameter("qty"));
-            Connection connection=null;
-            TypeAnimalDAO_JDBC typeAnimalDAO = new TypeAnimalDAO_JDBC(null);
-            TypeAnimal typeAnimal = typeAnimalDAO.getProduitById(Integer.parseInt(produitId));
-            if (typeAnimal != null) {
-                for (int i = 0; i < qty; i++) {
-                    shoppingCart.add(typeAnimal);
-                }
-            }
-        } else if ("DELETE".equals(action)) {
-            int delIndex = Integer.parseInt(request.getParameter("delindex"));
-            shoppingCart.remove(delIndex);
-        }
-//        TypeAnimalDAO_JDBC typeAnimalDAO = new TypeAnimalDAO_JDBC();
-//        List<TypeAnimal> types = typeAnimalDAO.afficherTypeAnimal();
-//        request.setAttribute("types", types);
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("/JSP/afficherPanier.jsp");
-//        dispatcher.forward(request, response);
+
+        // Passer la liste du panier à la JSP
+        request.setAttribute("panier", panier);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("afficherPanier.jsp");
+        dispatcher.forward(request, response);
     }
 }

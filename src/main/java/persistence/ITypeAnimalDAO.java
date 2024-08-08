@@ -10,6 +10,7 @@ public interface ITypeAnimalDAO {
     void ajouterTypeAnimal(TypeAnimal typeAnimal);
     void supprimerTypeAnimal(String nom);
     void modifierTypeAnimal(TypeAnimal typeAnimal);
-    TypeAnimal getProduitById(int i);
+    TypeAnimal getTypeAnimalById(int i);
+    TypeAnimal getPrixTypeAnimalById(int i);
 }
 

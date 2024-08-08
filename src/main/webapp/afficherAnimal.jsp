@@ -53,24 +53,25 @@
 
 </head>
 <body>
-<div id="dogCardsContainer">
-    <!-- Dynamically Generated Cards -->
-    <c:forEach var="animal" items="${animaux}">
-        <div class="card">
-            <%--<img class="card-img-top" src="../images/labradorR.jpeg" alt="Présentation">--%>
+<form name="shoppingForm" action="AjouterAuPanierServlet" method="GET">
+    <div id="dogCardsContainer">
+        <!-- Dynamically Generated Cards -->
+        <c:forEach var="animal" items="${animaux}">
+            <div class="card">
+                <img class="card-img-top" src="${animal.imageUrl}"/>
+                <p class="descript-dest">
+                    <c:out value="${animal.nom}"/>
+                    (<c:out value="${animal.sexe}"/>) <br>
+                    Prix: <c:out value="${animal.prixAnimal}"/>
+                </p>
+                <input type="hidden" name="animalId" value="${animal.id}"/>
+                <input type="submit" name="Submit" value="Ajouter au panier">
+            </div>
+        </c:forEach>
+    </div>
+</form>
+<a href="afficherPanier.jsp">Aller au panier</a>
 
-            <img class="card-img-top" src="${animal.imageUrl}"/>
-            <p class="descript-dest">
-                <c:out value="${animal.nom}"/>
-                (<c:out value="${animal.sexe}"/>) <br>
-                </bf> Prix: <c:out value="${animal.prixAnimal}"/></p>
-
-                <input type="submit" value="Ajouter au panier" name="ADD" />
-        </div>
-
-    </c:forEach>
-
-    <a href="afficherPanier.jsp">Aller au panier</a>
     <!-- End Dynamically Generated Cards -->
 </div>
 </body>
