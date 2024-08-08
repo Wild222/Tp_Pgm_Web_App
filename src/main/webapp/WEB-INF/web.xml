@@ -6,8 +6,30 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>AfficherAnimalServlet</servlet-name>
-        <url-pattern>/control/AfficherAnimalServlet</url-pattern>
+        <url-pattern>AfficherAnimalServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>AfficherPanierServlet</servlet-name>
+        <servlet-class>control.AfficherPanierServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AfficherPanierServlet</servlet-name>
+        <url-pattern>/AfficherPanierServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AjouterAnimalServlet</servlet-name>
+        <servlet-class>control.AjouterAnimalServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AjouterAnimalServlet</servlet-name>
+        <url-pattern>/AjouterAnimalServlet</url-pattern>
+    </servlet-mapping>
+
+
+
+
     <welcome-file-list>
         <welcome-file>acceuil.html</welcome-file>
     </welcome-file-list>

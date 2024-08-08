@@ -1,24 +1,51 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Panier</title>
+    <title>Votre Panier</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
 </head>
 <body>
 <h1>Votre Panier</h1>
-<c:if test="${not empty panier}">
-    <ul>
-        <c:forEach var="animalId" items="${panier}">
-            <!-- Vous devrez probablement récupérer les détails des animaux depuis la base de données en fonction de l'ID -->
-            <li>
-                Animal ID: <c:out value="${animalId}"/>
-            </li>
-        </c:forEach>
-    </ul>
-</c:if>
-<c:if test="${empty panier}">
-    <p>Votre panier est vide.</p>
-</c:if>
-<a href="index.jsp">Retourner à la boutique</a>
+
+<c:choose>
+    <c:when test="${empty panier}">
+        <p>Votre panier est vide.</p>
+    </c:when>
+    <c:otherwise>
+        <table>
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Sexe</th>
+                <th>Prix</th>
+                <th>Total</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="animal" items="${panier}">
+                <tr>
+                    <td>${animal.value.nom}</td>
+                    <td>${animal.value.sexe}</td>
+                    <td>${animal.value.prix}</td>
+                    <td></td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </c:otherwise>
+</c:choose>
+
 </body>
 </html>
