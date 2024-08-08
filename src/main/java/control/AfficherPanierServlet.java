@@ -8,27 +8,62 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.Panier;
+import model.TypeAnimal;
+import persistence.TypeAnimalDAO_JDBC;
 
 import java.io.IOException;
-
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-//lien qui sera utilise pour afficher le panier
 @WebServlet("/afficherPanier")
 public class AfficherPanierServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Panier panier = (Panier) session.getAttribute("panier");
+        Connection connection = null;
+        try {
+            DB_Connector dbConnector = new DB_Connector();
+            connection = dbConnector.getConnection();
 
-        // Si le panier est null, initialiser un panier vide
-        if (panier == null) {
-            panier = new Panier();
+            List<Integer> panier = (List<Integer>) session.getAttribute("panier");
+            if (panier == null) {
+                panier = new ArrayList<>();
+                session.setAttribute("panier", panier);
+            }
+
+            // Récupérer les détails des animaux du panier
+            TypeAnimalDAO_JDBC typeAnimalDAO = new TypeAnimalDAO_JDBC(connection);
+            List<TypeAnimal> animaux = new ArrayList<>();
+            for (int id : panier) {
+                TypeAnimal animal = typeAnimalDAO.getTypeAnimalById(id); // Implémentez cette méthode pour obtenir l'animal par ID
+                if (animal != null) {
+                    animaux.add(animal);
+
+
+                }
+            }
+
+            request.setAttribute("animaux", animaux);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/afficherPanier.jsp");
+            dispatcher.forward(request, response);
+        } catch (Exception e) {
+            throw new ServletException("Erreur lors de l'affichage du panier", e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
+    }
 
-        request.setAttribute("panier", panier.getAnimauxQuantites()); // Assurez-vous de passer un type approprié (Map ou List)
-        request.getRequestDispatcher("/afficherPanier.jsp").forward(request, response);
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
     }
 }

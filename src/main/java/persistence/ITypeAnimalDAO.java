@@ -11,6 +11,6 @@ public interface ITypeAnimalDAO {
     void supprimerTypeAnimal(String nom);
     void modifierTypeAnimal(TypeAnimal typeAnimal);
     TypeAnimal getTypeAnimalById(int i);
-    TypeAnimal getPrixTypeAnimalById(int i);
+
 }
 

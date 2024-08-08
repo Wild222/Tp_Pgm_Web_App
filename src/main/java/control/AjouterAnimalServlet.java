@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.Panier;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,19 +16,35 @@ import java.util.List;
 public class AjouterAnimalServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Récupérer l'ID de l'animal depuis le formulaire
-        int animalId = Integer.parseInt(request.getParameter("animalId"));
+        String produitId = request.getParameter("animalId");
+        //AutoIncrémenter la quantiter lors de lappeui sur ajouter panier
+         int quantite = 0;
 
-        // Récupérer le panier depuis la session, ou créer un nouveau panier si aucun panier n'existe
+
+
+
+        if (produitId == null || produitId.isEmpty()) {
+            throw new ServletException("Le paramètre 'id' est requis.");
+        }
+
+        int id;
+        try {
+            id = Integer.parseInt(produitId);
+        } catch (NumberFormatException e) {
+            throw new ServletException("Le paramètre 'id' doit être un nombre entier.", e);
+        }
+
         HttpSession session = request.getSession();
-        Panier panier = (Panier) session.getAttribute("panier");
+        List<Integer> panier = (List<Integer>) session.getAttribute("panier");
         if (panier == null) {
-            panier = new Panier();
+            panier = new ArrayList<>();
             session.setAttribute("panier", panier);
         }
 
-        // Ajouter l'animal au panier (avec une quantité par défaut de 1)
-        panier.ajouterAnimal(animalId, 1);
+        // Ajouter l'ID de l'animal à la liste du panier
+        panier.add(id);
+
+
 
         // Rediriger vers la même page
         response.sendRedirect(request.getHeader("referer"));

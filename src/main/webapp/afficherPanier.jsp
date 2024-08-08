@@ -20,7 +20,7 @@
 <h1>Votre Panier</h1>
 
 <c:choose>
-    <c:when test="${empty panier}">
+    <c:when test="${empty animaux}">
         <p>Votre panier est vide.</p>
     </c:when>
     <c:otherwise>
@@ -30,16 +30,17 @@
                 <th>Nom</th>
                 <th>Sexe</th>
                 <th>Prix</th>
-                <th>Total</th>
+                <th>Quantité</th>
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="animal" items="${panier}">
+            <c:forEach var="animal" items="${animaux}">
                 <tr>
-                    <td>${animal.value.nom}</td>
-                    <td>${animal.value.sexe}</td>
-                    <td>${animal.value.prix}</td>
-                    <td></td>
+                    <td>${animal.nom}</td>
+                    <td>${animal.sexe}</td>
+                    <td>${animal.prixAnimal}</td>
+                    <td>${animal.quantite}</td>
+                    <td>${animal.quantite*animal.prixAnimal}</td>
                 </tr>
             </c:forEach>
             </tbody>

@@ -25,7 +25,7 @@ public class SQL_BOX {
 
     public static final String MODIFIER_PRIX_ANIMAL = "UPDATE TypeAnimal SET nom = ? WHERE nom = ?";
 
-    public  static final String RECHERCHER_PRIX_TYPE_ANIMAL_PAR_ID = "SELECT prixAnimal FROM TypeAnimal WHERE id = ?";
+    public  static final String RECHERCHER_PRIX_TYPE_ANIMAL_PAR_ID = "SELECT prixAnimal, nom, sexe FROM TypeAnimal WHERE id = ?";
 
     public static final String RECHERCHER_TYPE_ANIMAL_PAR_ID = "SELECT * FROM TypeAnimal WHERE id = ?";
 }

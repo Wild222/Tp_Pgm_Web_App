@@ -115,23 +115,26 @@ public class TypeAnimalDAO_JDBC implements ITypeAnimalDAO {
         }
     }
 
-
-    //recherche prix animal par id
-    @Override
-    public TypeAnimal getPrixTypeAnimalById(int i) {
-        try {
-            PreparedStatement pst = this.connection.prepareStatement(SQL_BOX.RECHERCHER_PRIX_TYPE_ANIMAL_PAR_ID);
-            pst.setInt(1, i);
-            ResultSet rs = pst.executeQuery();
-            if (rs.next()) {
-                TypeAnimal typeAnimal = new TypeAnimal();
-                typeAnimal.setPrixAnimal(rs.getDouble("prixAnimal"));
-                return typeAnimal;
-            } else {
-                return null;
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+//
+//    //recherche prix animal par id
+//    @Override
+//    public TypeAnimal getTypeAnimauxById(int i) {
+//        try {
+//            PreparedStatement pst = this.connection.prepareStatement(SQL_BOX.RECHERCHER_PRIX_TYPE_ANIMAL_PAR_ID);
+//            pst.setInt(1, i);
+//            ResultSet rs = pst.executeQuery();
+//            if (rs.next()) {
+//                TypeAnimal typeAnimal = new TypeAnimal();
+//                typeAnimal.setId(rs.getInt("id"));
+//                typeAnimal.setNom(rs.getString("nom"));
+//                typeAnimal.setSexe(rs.getString("sexe"));
+//                typeAnimal.setPrixAnimal(rs.getDouble("prixAnimal"));
+//                return typeAnimal;
+//            } else {
+//                return null;
+//            }
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 }
