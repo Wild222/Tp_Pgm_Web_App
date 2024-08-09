@@ -18,7 +18,7 @@
 </head>
 <body>
 <h1>Votre Panier</h1>
-
+<div id="panier">
 <c:choose>
     <c:when test="${empty animaux}">
         <p>Votre panier est vide.</p>
@@ -47,6 +47,18 @@
         </table>
     </c:otherwise>
 </c:choose>
+</div>
 
+<button id="ViderPanier" onclick="viderPanier()">Vider Panier</button>
+
+<script>
+    function viderPanier() {
+        // Get the div with id "panier"
+        var divPanier = document.getElementById("panier");
+
+        // Clear its inner HTML
+        divPanier.innerHTML = "<p>Votre panier est vide.</p>";
+    }
+</script>
 </body>
 </html>
