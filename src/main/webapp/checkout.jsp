@@ -1,6 +1,14 @@
-<!DOCTYPE html>
-<html lang="en" >
-
+<%--
+  Created by IntelliJ IDEA.
+  User: gabla
+  Date: 12/08/2024
+  Time: 13:24
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<html>
 <head>
     <meta charset="UTF-8">
     <title>GevStack - Order confirm animation</title>
@@ -9,7 +17,10 @@
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;display=swap'>
     <link rel="stylesheet" href="css/checkout.css">
 </head>
-
+<!--
+1-Tableau qui prend les renseignements pour le paiement
+2-Afiichage du montant avec le montant de la jsp afficherPanier.jsp
+-->
 <body>
 <div>
     <form class="component" name="maFormCheckout" action="vide">
@@ -55,8 +66,14 @@
                     <td><input type="text" placeholder="CCV"/></td>
                 </tr>
                 <tr>
+
                     <td>
-                        Montant à Payer<br>
+                        Montant à Payer:<br>
+                        <!--
+                        récupération de la variable totauxApTaxe pour afficher
+                        le montant a payer au moment de compléter la commande
+                        -->
+                       <fmt:formatNumber value="${param.total}" type="number" maxFractionDigits="2" />
                     </td>
                 </tr>
 
@@ -65,11 +82,12 @@
             <div class="image">
                 <img src="images/petStore.jpeg" alt="store">
             </div>
+        </div>
     </form>
-</div>
 
 
 
+    <!--Bouton trouver sur internet je l'aimais-->
 <button class="order"><span class="default">Terminer Votre Commande</span><span class="success">Commande Effectuer
     <svg viewbox="0 0 12 10">
       <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
@@ -90,4 +108,3 @@
 </body>
 
 </html>
-
