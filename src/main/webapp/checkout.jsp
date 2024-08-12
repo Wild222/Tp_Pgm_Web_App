@@ -1,6 +1,14 @@
-<!DOCTYPE html>
-<html lang="en" >
-
+<%--
+  Created by IntelliJ IDEA.
+  User: gabla
+  Date: 12/08/2024
+  Time: 13:24
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<html>
 <head>
     <meta charset="UTF-8">
     <title>GevStack - Order confirm animation</title>
@@ -12,7 +20,7 @@
 
 <body>
 <div>
-    <form class="component" name="maFormCheckout" action="vide">
+    <form action="AfficherTotauxCheckoutServlet" class="component" name="maFormCheckout" action="vide">
         <div class="form-container">
             <table border="1">
                 <thead>
@@ -55,8 +63,10 @@
                     <td><input type="text" placeholder="CCV"/></td>
                 </tr>
                 <tr>
+
                     <td>
-                        Montant à Payer<br>
+                        Montant à Payer:<br>
+                       <fmt:formatNumber value="${param.total}" type="number" maxFractionDigits="2" />
                     </td>
                 </tr>
 
@@ -65,8 +75,9 @@
             <div class="image">
                 <img src="images/petStore.jpeg" alt="store">
             </div>
+        </div>
     </form>
-</div>
+
 
 
 
@@ -90,4 +101,3 @@
 </body>
 
 </html>
-
