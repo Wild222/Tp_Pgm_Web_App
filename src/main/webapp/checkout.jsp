@@ -17,7 +17,10 @@
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;display=swap'>
     <link rel="stylesheet" href="css/checkout.css">
 </head>
-
+<!--
+1-Tableau qui prend les renseignements pour le paiement
+2-Afiichage du montant avec le montant de la jsp afficherPanier.jsp
+-->
 <body>
 <div>
     <form action="AfficherTotauxCheckoutServlet" class="component" name="maFormCheckout" action="vide">
@@ -66,6 +69,10 @@
 
                     <td>
                         Montant à Payer:<br>
+                        <!--
+                        récupération de la variable totauxApTaxe pour afficher
+                        le montant a payer au moment de compléter la commande
+                        -->
                        <fmt:formatNumber value="${param.total}" type="number" maxFractionDigits="2" />
                     </td>
                 </tr>
@@ -80,7 +87,7 @@
 
 
 
-
+    <!--Bouton trouver sur internet je l'aimais-->
 <button class="order"><span class="default">Terminer Votre Commande</span><span class="success">Commande Effectuer
     <svg viewbox="0 0 12 10">
       <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
