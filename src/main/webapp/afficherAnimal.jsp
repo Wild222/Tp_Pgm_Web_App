@@ -1,76 +1,49 @@
-<%-- 
-    Document   : afficherAnimal
-    Created on : 16 juil. 2024, 14:07:38
-    Author     : gabla
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Page Animal</title>
-        <style>
-            .tooltip-trigger {
-                position: relative;
-                display: inline-block;
-            }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartes avec animaux</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/afficherAnimal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<div id="basketCounterContainer">
+    <a style="color: black;" href="AfficherPanierServlet">Panier</a>
+    <i class="fas fa-shopping-cart"></i>
+    <span id="basketCounter">0</span>
+</div>
 
-            .tooltip-content {
-                visibility: hidden;
-                background-color: black;
-                color: #fff;
-                text-align: center;
-                padding: 5px 0;
-                border-radius: 6px;
-                position: absolute;
-                z-index: 1;
-                bottom: 125%; /* Position the tooltip above the trigger */
-                left: 50%;
-                margin-left: -60px; /* Use half of the width to center the tooltip */
-                opacity: 0;
-                transition: opacity 0.3s;
-            }
+<br>
+<br>
 
-            .tooltip-trigger:hover .tooltip-content {
-                visibility: visible;
-                opacity: 1;
-            }
+<div id="dogCardsContainer">
 
-        </style>
-    </head>
-    <body>
-      <h1>Animaux disponibles</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Description</th>
-                <th>Prix</th>
-                <th>Quantité</th>
-                <th>Ajouter au Panier</th>
-            </tr>
-        </thead>
-        <tbody>
-            <c:forEach var="produit" items="${produits}">
-                <tr>
-                    <td>${produit.nom}</td>
-                    <td>${produit.description}</td>
-                    <td>${produit.prix}</td>
-                    <td>${produit.quantite}</td>
-                    <td>
-                        <form name="shoppingForm" action="AfficherProduitServlet" method="POST">
-                            <input type="hidden" name="produitId" value="${produit.id}">
-                            <b>Quantité: </b><input type="text" name="qty" size="3" value="1">
-                            <input type="hidden" name="action" value="ADD">
-                            <input type="submit" name="Submit" value="Ajouter au panier">
-                        </form>
-                    </td>
-                </tr>
-            </c:forEach>
-        </tbody>
-    </table>
-    <a href="afficherPanier.jsp">Aller au panier</a>
-    </body>
+
+    <c:forEach var="animal" items="${animaux}">
+        <div class="card">
+
+            <img class="card-img-top" src="${animal.imageUrl}"/>
+            <p class="descript-dest">
+                <c:out value="${animal.nom}"/>
+                (<c:out value="${animal.sexe}"/>) <br>
+                Prix: <c:out value="${animal.prixAnimal}"/>
+            </p>
+                    <b>Quantity: </b><input type="number" name="qty" SIZE="3" value=1 min="1">
+            
+                    <!--Lorsque que l'utilisateur appuie sur ajouter ca envoie l'information a la servlet ajouteranimal-->
+                    <form action="AjouterAnimalServlet" method="post">
+                        <input type="hidden" name="animalId" value="${animal.id}"/>
+                        <button class="btnAnimal" type="submit" name="ajouter">Ajouter au panier</button>
+                    </form>
+
+        </div>
+    </c:forEach>
+
+
+    <script src="${pageContext.request.contextPath}/javaScript/afficherAnimal.js"></script>
+</div>
+</body>
 </html>

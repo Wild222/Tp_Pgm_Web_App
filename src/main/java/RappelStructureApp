@@ -1,32 +1,45 @@
-Oui, dans une architecture bien structurée de type MVC (Modèle-Vue-Contrôleur), la classe DAO (Data Access Object) est responsable de la gestion de la connexion à la base de données et de l'exécution des opérations CRUD (Créer, Lire, Mettre à jour, Supprimer). Le DAO abstrait les détails de l'accès aux données d'une base de données ou d'un autre mécanisme de persistance, fournissant une interface simple à utiliser pour le reste de l'application.
+Oui, dans une architecture bien structurée de type MVC (Modèle-Vue-Contrôleur), la classe DAO (Data Access Object) est responsable de la gestion
+de la connexion à la base de données et de l'exécution des opérations CRUD (Créer, Lire, Mettre à jour, Supprimer). Le DAO abstrait les détails
+de l'accès aux données d'une base de données ou d'un autre mécanisme de persistance, fournissant une interface simple à utiliser pour le reste de l'application.
 
 Voici une explication plus détaillée des rôles et des interactions au sein d'une architecture MVC, en se concentrant particulièrement sur l'interaction des servlets avec les classes DAO et de service :
 
 Rôle du DAO
-Connexion à la base de données : Le DAO gère la connexion à la base de données. Cela inclut l'établissement des connexions, l'exécution des requêtes et la fermeture des connexions.
+Connexion à la base de données : Le DAO gère la connexion à la base de données. Cela inclut l'établissement des connexions, l'exécution des requêtes et
+la fermeture des connexions.
 
-Opérations CRUD : Le DAO fournit des méthodes pour effectuer des opérations CRUD sur les données. Ces méthodes abstraient les spécificités de la manière dont les données sont stockées et récupérées, permettant au reste de l'application d'interagir avec les données sans avoir à connaître les détails du schéma de la base de données ou de la syntaxe des requêtes.
+Opérations CRUD : Le DAO fournit des méthodes pour effectuer des opérations CRUD sur les données. Ces méthodes abstraient les spécificités de la manière dont
+les données sont stockées et récupérées, permettant au reste de l'application d'interagir avec les données sans avoir à connaître les détails du schéma de la base de données
+ou de la syntaxe des requêtes.
 
-Gestion des transactions : En fonction de la complexité des opérations, le DAO peut également gérer la gestion des transactions, en s'assurant que toutes les opérations d'une transaction sont terminées avec succès ou annulées en cas d'échec.
+Gestion des transactions : En fonction de la complexité des opérations, le DAO peut également gérer la gestion des transactions, en s'assurant que toutes les opérations
+d'une transaction sont terminées avec succès ou annulées en cas d'échec.
 
 Rôle de la couche de service
-Logique métier : La couche de service contient la logique métier de l'application. Elle utilise le DAO pour interagir avec la base de données mais se concentre sur l'application des règles et des workflows métier aux données.
+Logique métier : La couche de service contient la logique métier de l'application. Elle utilise le DAO pour interagir avec la base de données
+mais se concentre sur l'application des règles et des workflows métier aux données.
 
-Transformation des données : La couche de service peut transformer les données entre les formats utilisés par le DAO et les modèles utilisés par le reste de l'application. Cela peut impliquer la conversion des enregistrements bruts de la base de données en objets de domaine ou l'agrégation de données provenant de multiples sources.
+Transformation des données : La couche de service peut transformer les données entre les formats utilisés par le DAO et les modèles utilisés par le reste de l'application.
+Cela peut impliquer la conversion des enregistrements bruts de la base de données en objets de domaine ou l'agrégation de données provenant de multiples sources.
 
-Validation : La couche de service effectue souvent une validation des données d'entrée avant de les passer au DAO pour la persistance. Cela garantit que les données sont conformes aux règles métier avant d'être stockées.
+Validation : La couche de service effectue souvent une validation des données d'entrée avant de les passer au DAO pour la persistance.
+Cela garantit que les données sont conformes aux règles métier avant d'être stockées.
 
 Rôle du Servlet
-Gestion des requêtes HTTP : Le servlet agit comme point d'entrée pour la gestion des requêtes HTTP. Il analyse les paramètres de la requête et décide de l'opération métier à effectuer en fonction de l'URI et de la méthode de la requête.
+Gestion des requêtes HTTP : Le servlet agit comme point d'entrée pour la gestion des requêtes HTTP.
+Il analyse les paramètres de la requête et décide de l'opération métier à effectuer en fonction de l'URI et de la méthode de la requête.
 
-Invocation des services : Le servlet crée des instances de classes de service et invoque leurs méthodes pour effectuer l'opération demandée. Cela implique de passer toutes les données nécessaires aux méthodes de service et de gérer les résultats.
+Invocation des services : Le servlet crée des instances de classes de service et invoque leurs méthodes pour effectuer l'opération demandée.
+Cela implique de passer toutes les données nécessaires aux méthodes de service et de gérer les résultats.
 
-Sélection de la vue : Après que la couche de service a effectué ses opérations, le servlet sélectionne une vue appropriée (comme une page JSP) pour rendre la réponse. Il peut préparer les données pour la vue en les transformant dans un format approprié pour l'affichage.
+Sélection de la vue : Après que la couche de service a effectué ses opérations, le servlet sélectionne une vue appropriée (comme une page JSP) pour rendre la réponse.
+Il peut préparer les données pour la vue en les transformant dans un format approprié pour l'affichage.
 
 Exemple de flux
 Action de l'utilisateur : Une action de l'utilisateur déclenche une requête HTTP, comme la soumission d'un formulaire ou le clic sur un lien.
 Gestion par le servlet : Le servlet reçoit la requête et identifie l'opération à effectuer.
-Invocation du service : Le servlet crée un objet de service et appelle sa méthode pour effectuer l'opération. L'objet de service peut utiliser un DAO pour interagir avec la base de données.
+Invocation du service : Le servlet crée un objet de service et appelle sa méthode pour effectuer l'opération.
+L'objet de service peut utiliser un DAO pour interagir avec la base de données.
 Préparation du résultat : Le servlet prépare les données pour la vue, éventuellement en les transformant depuis le format retourné par la couche de service.
 Rendu de la réponse : Le servlet sélectionne une vue et transfère la requête et les données préparées à la vue pour le rendu.
 Résumé

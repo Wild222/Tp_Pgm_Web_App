@@ -10,10 +10,12 @@ INSERT INTO ProduitsAnimaux (nom, description, quantiteDisponible, prix) VALUES
                                                                              ('Terrarium pour reptiles', 'Terrarium en verre pour reptiles avec éclairage LED intégré.', 30, 89.99),
                                                                              ('Litière pour rongeurs', 'Litière biodégradable pour lapins.', 100, 14.25);
 
-INSERT INTO TypeAnimal (nom, sexe, prixAnimal) VALUES
-                                                   ('chien', 'M', 200.0),
-                                                   ('chat', 'F', 150.0),
-                                                   ('cheval', 'M', 1000.0),
-                                                   ('oiseau', 'F', 50.0);
+INSERT INTO TypeAnimal (nom, sexe, prixAnimal, imageUrl) VALUES
+                                                   ('chien', 'M', 200.0,'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/labradorR.jpeg'),
+                                                   ('chat', 'F', 150.0, 'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/chat1.jpg'),
+                                                   ('cheval', 'M', 1000.0,'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/cheval1.jpg'),
+                                                   ('oiseau', 'F', 50.0, 'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/perroquet.jpg'),
+                                                   ('Hamster', 'F', 56.34, 'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/hamster1.jpg'),
+                                                   ('cobbaye', 'M', 44.32, 'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/cobbaye.jpg');
 
-select * from ProduitsAnimaux
+
