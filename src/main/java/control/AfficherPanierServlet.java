@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.PanierItem;
 import model.TypeAnimal;
 import persistence.TypeAnimalDAO_JDBC;
 
@@ -28,7 +29,7 @@ public class AfficherPanierServlet extends HttpServlet {
             DB_Connector dbConnector = new DB_Connector();
             connection = dbConnector.getConnection();
 
-            List<Integer> panier = (List<Integer>) session.getAttribute("panier");
+            List<PanierItem> panier = (List<PanierItem>) session.getAttribute("panier");
             if (panier == null) {
                 panier = new ArrayList<>();
                 session.setAttribute("panier", panier);
@@ -37,12 +38,11 @@ public class AfficherPanierServlet extends HttpServlet {
             // Récupérer les détails des animaux du panier
             TypeAnimalDAO_JDBC typeAnimalDAO = new TypeAnimalDAO_JDBC(connection);
             List<TypeAnimal> animaux = new ArrayList<>();
-            for (int id : panier) {
-                TypeAnimal animal = typeAnimalDAO.getTypeAnimalById(id); // Implémentez cette méthode pour obtenir l'animal par ID
+            for (PanierItem item : panier) {
+                TypeAnimal animal = typeAnimalDAO.getTypeAnimalById(item.getId());
                 if (animal != null) {
+                    animal.setQuantite(item.getQuantite());
                     animaux.add(animal);
-
-
                 }
             }
 

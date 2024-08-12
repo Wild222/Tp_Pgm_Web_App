@@ -4,7 +4,7 @@ public class TypeAnimal {
     private int id; 
     private String nom;
     private String sexe;
-//    private int quantite;
+    private int quantite;
     private double prixAnimal;
     private String imageUrl;
 
@@ -70,4 +70,11 @@ public class TypeAnimal {
         this.prixAnimal = prixAnimal;
     }
 
+
+    public int getQuantite() {
+        return quantite;
+    }
+    public void setQuantite(int quantite) {
+        this.quantite = quantite;
+    }
 }

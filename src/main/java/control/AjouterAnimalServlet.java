@@ -6,8 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.TypeAnimal;
-
+import model.PanierItem;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,61 +16,62 @@ import java.util.List;
 public class AjouterAnimalServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //Récupere le paramètre 'animalId' dans la jsp afficher animal
+        // Récupère le paramètre animalId
         String produitId = request.getParameter("animalId");
-
-        //Récupere la quantité de la page afficher animal
-        String quantite = request.getParameter("qty") ;
-
-
-
-        if (produitId == null || produitId.isEmpty()) {
-            throw new ServletException("Le paramètre 'id' est requis.");
+        // Récupère le paramètre qty
+        String quantite = request.getParameter("qty");
+        // Vérifier si les paramètres sont vides
+        if (quantite == null || quantite.isEmpty()) {
+            quantite = "1";
         }
+
+        //
+        System.out.println("Produit ID: " + produitId);
+        System.out.println("Quantité: " + quantite);
+
+        // Vérifier si les paramètres sont vides
+        if (produitId == null || produitId.isEmpty()) {
+            throw new ServletException("Le paramètre 'animalId' est requis.");
+        }
+
 
         int id;
+        int qty;
+
+        //Convertir les paramètres en nombres entiers
         try {
             id = Integer.parseInt(produitId);
+            qty = Integer.parseInt(quantite);
         } catch (NumberFormatException e) {
-            throw new ServletException("Le paramètre 'id' doit être un nombre entier.", e);
+            throw new ServletException("Les paramètres 'animalId' et 'qty' doivent être des nombres entiers.", e);
         }
 
+        //Récupere la session
         HttpSession session = request.getSession();
-        List<Integer> panier = (List<Integer>) session.getAttribute("panier");
+        // Vérifier si le panier existe de déjà si non le creer
+        List<PanierItem> panier = (List<PanierItem>) session.getAttribute("panier");
         if (panier == null) {
             panier = new ArrayList<>();
             session.setAttribute("panier", panier);
         }
 
-        // Ajouter l'ID de l'animal à la liste du panier
-        panier.add(id);
+        // Vérifier si l'article est déjà dans le panier
+        boolean found = false;
+        for (PanierItem item : panier) {
+            if (item.getId() == id) {
+                // Si l'article est dans le panie, incrémente la quantité
+                item.setQuantite(item.getQuantite() + qty);
+                found = true;
+                break;
+            }
+        }
 
+        // Si l'article est pas dans le panier, l'ajoute au panier
+        if (!found) {
+            panier.add(new PanierItem(id, qty));
+        }
 
         // Rediriger vers la même page
         response.sendRedirect(request.getHeader("referer"));
     }
 }
-
-/*
-    {
-
-            //on récupère l'item à la position i
-            CD cd = (CD) buylist.elementAt(i);
-
-            // si on trouve l'item dans le panier
-            if (cd.getAlbum().equals(aCD.getAlbum())) {
-
-               //on va modifier la quantité en lui ajoutantant la
-               // nouvelle quantité
-              cd.setQuantity(cd.getQuantity()+aCD.getQuantity());
-
-              //on replace l'item dans le panier
-              buylist.setElementAt(cd,i);
-
-              //on active la variable qui montre qu'on a trouvé l'item
-              //dans le panier
-              match = true;
-            } //end of if name matches
-          } // end of for
-
- */

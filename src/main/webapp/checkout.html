@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <title>GevStack - Order confirm animation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;display=swap'>
+    <link rel="stylesheet" href="css/checkout.css">
+</head>
+
+<body>
+<div>
+    <form class="component" name="maFormCheckout" action="vide">
+        <div class="form-container">
+            <table border="1">
+                <thead>
+                <tr>
+                    <th>Information Personnelle</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><input type="text" placeholder="Nom"/></td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="Prénom"/></td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="Courriel"/></td>
+                </tr>
+                <thead>
+                <tr>
+                    <th>Information Carte</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td><input type="text" placeholder="Titulaire de la carte"/></td>
+                </tr>
+                <tr>
+                    <td>
+                        Mode de Paiement<br>
+                        <input type="radio" name="modeP" value="VISA" />VISA<br>
+                        <input type="radio" name="modeP" value="MASTER CARD" />MASTER CARD<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="Numéro de carte"/></td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="Date d'expiration"/></td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="CCV"/></td>
+                </tr>
+                <tr>
+                    <td>
+                        Montant à Payer<br>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+            <div class="image">
+                <img src="images/petStore.jpeg" alt="store">
+            </div>
+    </form>
+</div>
+
+
+
+<button class="order"><span class="default">Terminer Votre Commande</span><span class="success">Commande Effectuer
+    <svg viewbox="0 0 12 10">
+      <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+    </svg></span>
+    <div class="box"></div>
+    <div class="truck">
+        <div class="back"></div>
+        <div class="front">
+            <div class="window"></div>
+        </div>
+        <div class="light top"></div>
+        <div class="light bottom"></div>
+    </div>
+    <div class="lines"></div> </button>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+<script src="javaScript/checkout.js"></script>
+</div>
+</body>
+
+</html>
+

@@ -31,7 +31,7 @@
                 (<c:out value="${animal.sexe}"/>) <br>
                 Prix: <c:out value="${animal.prixAnimal}"/>
             </p>
-                    <b>Quantity: </b><input type="text" name="qty" SIZE="3" value=1>
+                    <b>Quantity: </b><input type="number" name="qty" SIZE="3" value=1 min="1">
             
                     <!--Lorsque que l'utilisateur appuie sur ajouter ca envoie l'information a la servlet ajouteranimal-->
                     <form action="AjouterAnimalServlet" method="post">
@@ -41,6 +41,7 @@
 
         </div>
     </c:forEach>
+
 
     <script src="${pageContext.request.contextPath}/javaScript/afficherAnimal.js"></script>
 </div>

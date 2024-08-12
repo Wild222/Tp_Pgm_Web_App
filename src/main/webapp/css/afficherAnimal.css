@@ -1,7 +1,5 @@
 body {
-
-    padding: 20px; /* Adds padding around the entire page content */
-    background-color: #f6f7f8; /* Light grey background for a soft contrast */
+    background-image: linear-gradient(-90deg, #E6E2AF 0%, #002F2F 100%);
 }
 
 #dogCardsContainer {
