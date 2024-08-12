@@ -21,16 +21,18 @@
 
 <div id="dogCardsContainer">
 
-    <!-- Dynamically Generated Cards -->
+
     <c:forEach var="animal" items="${animaux}">
         <div class="card">
-                <%--<img class="card-img-top" src="../images/labradorR.jpeg" alt="Présentation">--%>
+
             <img class="card-img-top" src="${animal.imageUrl}"/>
             <p class="descript-dest">
                 <c:out value="${animal.nom}"/>
                 (<c:out value="${animal.sexe}"/>) <br>
                 Prix: <c:out value="${animal.prixAnimal}"/>
             </p>
+                    <b>Quantity: </b><input type="number" name="qty" SIZE="3" value=1 min="1">
+            
                     <!--Lorsque que l'utilisateur appuie sur ajouter ca envoie l'information a la servlet ajouteranimal-->
                     <form action="AjouterAnimalServlet" method="post">
                         <input type="hidden" name="animalId" value="${animal.id}"/>
@@ -39,6 +41,7 @@
 
         </div>
     </c:forEach>
+
 
     <script src="${pageContext.request.contextPath}/javaScript/afficherAnimal.js"></script>
 </div>
