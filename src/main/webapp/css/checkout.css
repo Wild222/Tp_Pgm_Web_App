@@ -1,12 +1,18 @@
-body {
-    background-image: linear-gradient(-90deg, #E6E2AF 0%, #002F2F 100%);
+body{
+    font-family: Helvetica;
+    background: rgba( 71, 147, 227, 1);
+        min-height: 100vh;
+        font-family: Roboto, Arial;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 }
 
 .component {
     width: 80%;
     margin: 5rem auto;
     padding: 1rem;
-    background-color: #beb858;
+    background-color: #82c1cc;
 
 }
 
@@ -456,14 +462,7 @@ html {
     box-sizing: inherit;
 }
 
-body {
-    min-height: 100vh;
-    font-family: Roboto, Arial;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #0f172a;
-}
+
 body .dribbble {
     position: fixed;
     display: block;

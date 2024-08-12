@@ -1,7 +1,14 @@
-body {
-    background-image: linear-gradient(-90deg, #E6E2AF 0%, #002F2F 100%);
+body{
+    font-family: Helvetica;
+    background: rgba( 71, 147, 227, 1);
 }
-
+.header {
+    background-color: #acdcdb;
+    padding: 20px;
+    text-align: center;
+    border-radius: 20px;
+    margin: 20px;
+}
 .container {
     display: flex;
     align-items: flex-start;
