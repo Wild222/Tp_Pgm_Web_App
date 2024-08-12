@@ -23,7 +23,7 @@
 -->
 <body>
 <div>
-    <form action="AfficherTotauxCheckoutServlet" class="component" name="maFormCheckout" action="vide">
+    <form class="component" name="maFormCheckout" action="vide">
         <div class="form-container">
             <table border="1">
                 <thead>
