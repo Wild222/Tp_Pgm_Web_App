@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -10,10 +11,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+
 <div id="basketCounterContainer">
     <a style="color: black;" href="AfficherPanierServlet">Panier</a>
     <i class="fas fa-shopping-cart"></i>
-    <span id="basketCounter">0</span>
+    <span id="basketCounter">  <c:out value="${quantite}"/> </span>
+
 </div>
 
 <br>

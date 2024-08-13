@@ -26,4 +26,10 @@ public class PanierItem {
         this.quantite = quantite;
     }
 
+    @Override
+    public String toString() {
+        return "PanierItem{" +
+                ", quantite=" + quantite +
+                '}';
+    }
 }

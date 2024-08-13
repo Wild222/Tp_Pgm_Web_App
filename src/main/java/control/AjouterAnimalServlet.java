@@ -78,6 +78,7 @@
 
 package control;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -95,73 +96,60 @@ public class AjouterAnimalServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Récupère le paramètre animalId
+        // Retrieve the animalId parameter
         String produitId = request.getParameter("animalId");
-        // Récupère le paramètre qty
-        String quantiteAnimaux = request.getParameter("qty");
-        int quantite = 0;
-        try {
-            quantite = Integer.parseInt(quantiteAnimaux);
-            System.out.println("Parsed quantite = " + quantite);
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid number format");
-            // Optionally, set a default value or handle the error differently
-            quantite = 1; // Setting a default value in case of NumberFormatException
-        }
-
-// Increment the quantite
-
-
-        //System.out.println("Produit ID: " + produitId);
-        //System.out.println("Quantité: " + quantite);
-
-        // Vérifier si les paramètres sont vides
         if (produitId == null || produitId.isEmpty()) {
             throw new ServletException("Le paramètre 'animalId' est requis.");
         }
 
-
-        int id;
-
-        //Convertir les paramètres en nombres entiers
+        // Retrieve and parse the quantity parameter
+        int quantityToAdd;
         try {
-            id = Integer.parseInt(produitId);
-
+            quantityToAdd = Integer.parseInt(request.getParameter("qty"));
         } catch (NumberFormatException e) {
-            throw new ServletException("Les paramètres 'animalId' et 'qty' doivent être des nombres entiers.", e);
+            quantityToAdd = 1; // Default to 1 if there's an error
         }
 
-        //Récupere la session
+        // Retrieve the session
         HttpSession session = request.getSession();
-        // Vérifier si le panier existe de déjà si non le creer
+
+        // Retrieve or initialize the cart
         List<PanierItem> panier = (List<PanierItem>) session.getAttribute("panier");
         if (panier == null) {
             panier = new ArrayList<>();
             session.setAttribute("panier", panier);
         }
 
-        // Vérifier si l'article est déjà dans le panier
+        // Check if the item is already in the cart
         boolean found = false;
         for (PanierItem item : panier) {
-            if (item.getId() == id) {
-                // Si l'article est dans le panie, ajuste la quantité
-                item.setQuantite(item.getQuantite() + quantite); // Adjusted to add the requested quantity
+            if (item.getId() == Integer.parseInt(produitId)) {
+                // If the item is in the cart, update its quantity
+                item.setQuantite(item.getQuantite() + quantityToAdd);
                 found = true;
                 break;
             }
         }
 
-// Si l'article est pas dans le panier, l'ajoute au panier
+        // If the item is not in the cart, add it
         if (!found) {
-            panier.add(new PanierItem(id, quantite)); // Ensure the quantity matches the requested quantity
+            panier.add(new PanierItem(Integer.parseInt(produitId), quantityToAdd));
         }
 
-// Increment the overall quantity only if the product was found and updated
-        if (found) {
-            quantite++;
+        // Update total quantity in session (for display purposes)
+        Integer currentQuantity = (Integer) session.getAttribute("quantite");
+        if (currentQuantity == null) {
+            currentQuantity = 0;
         }
+        currentQuantity += quantityToAdd;
+        session.setAttribute("quantite", currentQuantity);
 
-
-        // Rediriger vers la même page
-        response.sendRedirect(request.getHeader("referer"));
+        // Redirect to the referring page or a default page
+        String referer = request.getHeader("referer");
+        if (referer != null) {
+            response.sendRedirect(referer);
+        } else {
+            response.sendRedirect(request.getContextPath() + "/afficherAnimal.jsp");
+        }
     }
 }
