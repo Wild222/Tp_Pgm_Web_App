@@ -11,11 +11,11 @@ INSERT INTO ProduitsAnimaux (nom, description, quantiteDisponible, prix) VALUES
                                                                              ('Litière pour rongeurs', 'Litière biodégradable pour lapins.', 100, 14.25);
 
 INSERT INTO TypeAnimal (nom, sexe, prixAnimal, imageUrl) VALUES
-                                                   ('chien', 'M', 200.0,'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/labradorR.jpeg'),
-                                                   ('chat', 'F', 150.0, 'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/chat1.jpg'),
-                                                   ('cheval', 'M', 1000.0,'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/cheval1.jpg'),
-                                                   ('oiseau', 'F', 50.0, 'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/perroquet.jpg'),
+                                                   ('Chien', 'M', 200.0,'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/labradorR.jpeg'),
+                                                   ('Chat', 'F', 150.0, 'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/chat1.jpg'),
+                                                   ('Cheval', 'M', 1000.0,'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/cheval1.jpg'),
+                                                   ('Oiseau', 'F', 50.0, 'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/perroquet.jpg'),
                                                    ('Hamster', 'F', 56.34, 'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/hamster1.jpg'),
-                                                   ('cobbaye', 'M', 44.32, 'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/cobbaye.jpg');
+                                                   ('Cobbaye', 'M', 44.32, 'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/cobbaye.jpg');
 
 
