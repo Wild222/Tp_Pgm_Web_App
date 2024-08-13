@@ -10,18 +10,28 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/afficherAnimal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/navbar.css">
     <title>Cartes avec animaux</title>
 </head>
 <body>
+<!--Barre de naviguation-->
+<nav>
+    <ul>
+        <li><a href="acceuil.html">Accueil</a></li>
+        <li><a href="#">Produit</a></li>
+        <li><a href="#">Animal</a></li>
+        <li><a href="afficherPanier.jsp">Panier</a></li>
+        <li><a href="checkout.jsp">Retour au Paiement</a></li>
+        <li><div id="basketCounterContainer">
+            <a style="color: black;" href="AfficherPanierServlet">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+            <span id="basketCounter">  <c:out value="${quantite}"/> </span>
+            <%--    <input type="button" name="ViderPanier" >--%>
 
-<div id="basketCounterContainer">
-    <a style="color: black;" href="AfficherPanierServlet">Panier</a>
-    <i class="fas fa-shopping-cart"></i>
-    <span id="basketCounter">  <c:out value="${quantite}"/> </span>
-<%--    <input type="button" name="ViderPanier" >--%>
-
-</div>
-
+        </div></li>
+    </ul>
+</nav>
 <br>
 <br>
 

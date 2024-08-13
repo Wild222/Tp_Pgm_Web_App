@@ -7,9 +7,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/afficherPanier.css">
+    <link rel="stylesheet" href="css/navbar.css">
     <title>Votre Panier</title>
 </head>
 <body>
+<!--Barre de naviguation-->
+<nav>
+    <ul>
+        <li><a href="acceuil.html">Accueil</a></li>
+        <li><a href="#">Produit</a></li>
+        <li><a href="AfficherAnimalServlet">Animal</a></li>
+        <li><a href="#">Panier</a></li>
+        <li><a href="checkout.jsp">Retour au Paiement</a></li>
+    </ul>
+</nav>
 <h1>Votre Panier</h1>
 
 <c:choose>
