@@ -7,20 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cartes avec animaux</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/afficherAnimal.css">
+    <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-<div id="basketCounterContainer">
-    <a style="color: black;" href="AfficherPanierServlet">Panier</a>
-    <i class="fas fa-shopping-cart"></i>
-    <span id="basketCounter">0</span>
-</div>
-
-<br>
-<br>
+<!--Barre de naviguation-->
+<nav>
+    <ul>
+        <li><a href="acceuil.html">Accueil</a></li>
+        <li><a href="#">Produit</a></li>
+        <li><a href="#">Animal</a></li>
+        <li><a href="afficherPanier.jsp">Panier</a></li>
+        <li>
+            <div id="basketCounterContainer">
+            <a style="color: black;" href="AfficherPanierServlet"><i class="fas fa-shopping-cart"></i></a>
+            <span id="basketCounter">0</span>
+            </div>
+        </li>
+    </ul>
+</nav>
 
 <div id="dogCardsContainer">
-
 
     <c:forEach var="animal" items="${animaux}">
         <div class="card">
