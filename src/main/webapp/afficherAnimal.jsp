@@ -5,10 +5,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cartes avec animaux</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/afficherAnimal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Cartes avec animaux</title>
 </head>
 <body>
 
@@ -16,6 +18,7 @@
     <a style="color: black;" href="AfficherPanierServlet">Panier</a>
     <i class="fas fa-shopping-cart"></i>
     <span id="basketCounter">  <c:out value="${quantite}"/> </span>
+<%--    <input type="button" name="ViderPanier" >--%>
 
 </div>
 
@@ -39,7 +42,8 @@
                     <form action="AjouterAnimalServlet" method="post">
                         <input type="hidden" name="animalId" value="${animal.id}"/>
                         <b>Quantity: </b><input type="number" name="qty" SIZE="3" value=1 min="1">
-                        <button class="btnAnimal" type="submit" name="ajouter">Ajouter au panier</button>
+                        <button type="submit"  style="line-height:2px ; height:34px;width:150px;border:3px solid darkblue; font-size: smaller" name="ajouter" data-mdb-button-init="" data-mdb-ripple-init="" class="btn btn-primary btn-lg" data-mdb-button-initialized="true" style="">Ajouter au panier</button>
+<%--                    <button class="btnAnimal" type="submit" name="ajouter">Ajouter au panier</button>--%>
                     </form>
 
         </div>
