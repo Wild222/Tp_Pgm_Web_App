@@ -16,13 +16,26 @@
 
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;display=swap'>
     <link rel="stylesheet" href="css/checkout.css">
+    <link rel="stylesheet" href="css/navbar.css">
 </head>
+
 <!--
 1-Tableau qui prend les renseignements pour le paiement
 2-Afiichage du montant avec le montant de la jsp afficherPanier.jsp
 -->
 <body>
 <div>
+    <!--Barre de naviguation-->
+    <nav>
+        <ul>
+            <li><a href="acceuil.html">Accueil</a></li>
+            <li><a href="#">Produit</a></li>
+            <li><a href="AfficherAnimalServlet">Animal</a></li>
+            <li><a href="afficherPanier.jsp">Panier</a></li>
+            <li><a href="#">Retour au Paiement</a></li>
+        </ul>
+    </nav>
+
     <form class="component" name="maFormCheckout" action="vide">
         <div class="form-container">
             <table border="1">
