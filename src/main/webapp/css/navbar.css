@@ -1,14 +1,7 @@
-/*
-html {
-    height:100%;
-    background-image: linear-gradient(to right top, #8e44ad 30%, #3498db 100%);
-}
-*/
 nav {
-    max-width: 960px;
+    max-width: 1260px;
     mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #ffffff 25%, #ffffff 75%, rgba(255, 255, 255, 0) 100%);
-    margin: 0 auto;
-    padding: 60px 0;
+
 }
 
 nav ul {
@@ -25,7 +18,7 @@ nav ul li a {
     padding: 18px;
     font-family: "Open Sans";
     text-transform:uppercase;
-    color: rgba(0, 35, 122, 0.5);
+    color: rgb(255, 255, 255);
     font-size: 18px;
     text-decoration: none;
     display: block;
