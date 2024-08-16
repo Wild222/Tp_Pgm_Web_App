@@ -30,7 +30,7 @@
                     <span id="basketCounter"><c:out value="${quantite}"/></span>
                 </i>
                 </a>
-                <%--    <input type="button" name="ViderPanier" >--%>
+
             </div>
         </li>
     </ul>
@@ -52,9 +52,9 @@
                     <!--Lorsque que l'utilisateur appuie sur ajouter ca envoie l'information a la servlet ajouteranimal-->
                     <form action="AjouterAnimalServlet" method="post">
                         <input type="hidden" name="animalId" value="${animal.id}"/>
-                        <b>Quantity: </b><input style="width: 50px" type="number" name="qty" SIZE="3" value=1 min="1">
+                        <b>Quantiter: </b><input style="width: 50px" type="number" name="qty" SIZE="3" value=1 min="1">
                         &nbsp;
-                        <input class="bouton" type="submit" value="Appuyer ICI" name="ajouter" />
+                        <input class="bouton" type="submit" value="Ajouter Au Panier" name="ajouter" />
                     </form>
 
         </div>

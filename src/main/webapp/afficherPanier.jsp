@@ -53,7 +53,17 @@
                         <td>${animal.nom}</td>
                         <td>${animal.sexe}</td>
                         <td><fmt:formatNumber value="${animal.prixAnimal}" type="number" maxFractionDigits="2"/></td>
-                        <td>${quantite}</td>
+                        <td>
+                            <!--Lorsque que l'utilisateur appuie sur ajouter ca envoie l'information a la servlet ajouteranimal-->
+                            <form action="AjouterAnimalServlet" method="post">
+                                <input type="hidden" name="animalId" value="${animal.id}"/>
+                                <div class="quantity-button">
+                                    <button name="supprimer">-</button>
+                                    <p class="quantity">${quantite}</p>
+                                    <button name="qty" >+</button>
+                                </div>
+                            </form>
+                        </td>
                         <td><fmt:formatNumber value="${animalTotal}" type="number" maxFractionDigits="2"/></td>
                     </tr>
                 </c:forEach>
@@ -65,7 +75,7 @@
                 <c:set var="totauxApTaxe" value="${total + tps + tvq}"/>
 
                 <tr>
-                    <td style="background-color: rgba(71, 147, 227, 1)" colspan="3"></td>
+                    <td style="background-color: transparent" colspan="3"></td>
                     <td>Total</td>
                     <!--
                     1-Formater les nombre pour qu'il soit maximum 2 chiffre apres la virgule
@@ -74,7 +84,7 @@
                     <td><fmt:formatNumber value="${totauxAvTaxe}" type="number" maxFractionDigits="2" /></td>
                 </tr>
                 <tr>
-                    <td style="background-color: rgba(71, 147, 227, 1)" colspan="3"></td>
+                    <td style="background-color: transparent" colspan="3"></td>
                     <td>TPS 5%</td>
                     <!--
                     1-Formater les nombre pour qu'il soit maximum 2 chiffre apres la virgule
@@ -83,7 +93,7 @@
                     <td><fmt:formatNumber value="${tps}" type="number" maxFractionDigits="2" /></td>
                 </tr>
                 <tr>
-                    <td style="background-color: rgba(71, 147, 227, 1)" colspan="3"></td>
+                    <td style="background-color: transparent" colspan="3"></td>
                     <td>TVQ 9,9975%</td>
                     <!--
                     1-Formater les nombre pour qu'il soit maximum 2 chiffre apres la virgule
@@ -92,7 +102,7 @@
                     <td><fmt:formatNumber value="${tvq}" type="number" maxFractionDigits="2" /></td>
                 </tr>
                 <tr>
-                    <td style="background-color: rgba(71, 147, 227, 1)" colspan="3"></td>
+                    <td style="background-color: transparent" colspan="3"></td>
                     <td>Total Apres Taxe</td>
                     <!--
                     1-Formater les nombre pour qu'il soit maximum 2 chiffre apres la virgule
