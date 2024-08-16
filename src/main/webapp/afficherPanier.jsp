@@ -59,12 +59,12 @@
                         <td>
                             <!--Lorsque que l'utilisateur appuie sur ajouter ca envoie l'information a la servlet ajouteranimal-->
 
-                            <form action="AjouterAnimalServlet" method="post">
-                                <input type="hidden" name="animalId" value="${animal.id}"/>
-                                <div class="quantity-button">
-                                    <button name="supprimer">-</button>
-                                    <p class="quantity">${quantite}</p>
-                                    <button name="qty" >+</button>
+                        <form action="AjouterAnimalServlet" method="post">
+                         <input type="hidden" name="animalId" value="${animal.id}"/>
+                          <div class="quantity-button">
+                               <button name="supprimer">-</button>
+                                <p class="quantity">${quantite}</p>
+                                <button name="qty" >+</button>
 
                                 </div>
                             </form>

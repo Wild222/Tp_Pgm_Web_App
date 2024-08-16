@@ -52,16 +52,13 @@ public class AfficherPanierServlet extends HttpServlet {
                 try {
                     // Parse the animalId string to an integer
                     int animalId = Integer.parseInt(animalIdStr);
-
-                    // Get the session and the cart (panier) from the session
                      session = request.getSession();
-
                     if (panier != null) {
-                        // Remove the animal with the specified ID from the cart
+                        // Supprimer animal du panier
                         panier.removeIf(item -> item.getId() == animalId);
-
-                        // Update the cart in the session
+                        // mettre a jour le panier
                         session.setAttribute("panier", panier);
+                        response.sendRedirect("AfficherPanierServlet");
                     } else {
                         // Handle the case where the cart is not found in the session
                         System.out.println("Cart not found in session.");
