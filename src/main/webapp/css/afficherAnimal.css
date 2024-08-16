@@ -30,11 +30,12 @@ body{
     width: 100%;
     height: 200px;
     object-fit: cover;
+    border-radius: 10px 10px 0 0;
 }
 
 .descript-dest{
     font-size: 18px; /* Increased font size for better readability */
-    color: #666; /* Darker text color for contrast */
+    color: #212429; /* Darker text color for contrast */
     margin: 15px 0; /* Increased margin for spacing */
 }
 
