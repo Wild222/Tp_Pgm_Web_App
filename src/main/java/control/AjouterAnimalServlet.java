@@ -1,16 +1,4 @@
-package control;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import model.PanierItem;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 //
 //package control;
@@ -90,6 +78,20 @@ import java.util.List;
 //        }
 //    }
 //}
+//
+ package control;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import model.PanierItem;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 @WebServlet("/AjouterAnimalServlet")
 public class AjouterAnimalServlet extends HttpServlet {
     @Override
