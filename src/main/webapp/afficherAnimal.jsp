@@ -17,7 +17,7 @@
 <!--Barre de naviguation-->
 <nav>
     <ul>
-        <li><a href="acceuil.html">Accueil</a></li>
+        <li><a href="acceuil.jsp">Accueil</a></li>
         <li><a href="#">Produit</a></li>
         <li><a href="#">Animal</a></li>
         <li><a href="AfficherPanierServlet">Panier</a></li>
