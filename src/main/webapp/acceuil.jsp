@@ -1,15 +1,15 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page isELIgnored="false"%>
 
+<fmt:setLocale value="${param.lang}" />
 <!-- Définir le bundle de messages -->
 <fmt:setBundle basename="ChoixLangue"/>
 
-<!-- Définir la locale à partir de la session ou utiliser la locale par défaut -->
-<fmt:setLocale value="${sessionScope['javax.servlet.jsp.jstl.fmt.locale.session'] != null ? sessionScope['javax.servlet.jsp.jstl.fmt.locale.session'] : 'fr_CA'}" />
 
 
-<html>
+<html lang="${param.lang}">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/acceuil.css">
@@ -26,26 +26,12 @@
         <li><a href="afficherPanier.jsp"><fmt:message key="nav.panier"/></a></li>
         <li><a href="checkout.jsp"><fmt:message key="nav.paiement"/></a></li>
         <li>
-            <!--<form action="ChoixLangueServlet" method="post">
-                <select name="langue">
-                    <option value="fr_CA"><fmt:message key="nav.select.francais"/></option>
-                    <option value="en_US"><fmt:message key="nav.select.anglais"/></option>
-                </select>
-                <input type="submit" value="<fmt:message key='nav.select.submit'/>"/>
-            </form>-->
-            <form action="ChoixLangueServlet" method="post">
-                <label>
-                    <input type="radio" name="langue" value="fr_CA"
-                           <c:if test="${sessionScope['javax.servlet.jsp.jstl.fmt.locale.session'] == 'fr_CA'}">checked</c:if> />
-                    Français
-                </label>
-                <label>
-                    <input type="radio" name="langue" value="en_US"
-                           <c:if test="${sessionScope['javax.servlet.jsp.jstl.fmt.locale.session'] == 'en_US'}">checked</c:if> />
-                    English
-                </label>
-                <input type="submit" value="Submit"/>
-            </form>
+
+
+                <li><a href="?lang=en_US"><fmt:message key="nav.select.anglais" /></a></li>
+
+                <li><a href="?lang=fr_CA"><fmt:message key="nav.select.francais" /></a></li>
+
 
         </li>
     </ul>
