@@ -56,19 +56,22 @@ public class AfficherPanierServlet extends HttpServlet {
                     if (panier != null) {
                         // Supprimer animal du panier
                         panier.removeIf(item -> item.getId() == animalId);
+
                         // mettre a jour le panier
+                        //decrementer le panier affiché sur la page accueil.
+
                         session.setAttribute("panier", panier);
                         response.sendRedirect("AfficherPanierServlet");
                     } else {
-                        // Handle the case where the cart is not found in the session
-                        System.out.println("Cart not found in session.");
+
+                        System.out.println("Panier non trouvé dans la sesison.");
                     }
                 } catch (NumberFormatException e) {
-                    // Handle the case where animalIdStr is not a valid integer
+
                     System.out.println("Invalid animal ID format: " + animalIdStr);
                 }
             } else {
-                // Handle the case where the animalId parameter is missing or empty
+                //si pas de paramettre id trouvé
                 System.out.println("Animal ID parameter is missing or empty.");
             }
             request.setAttribute("animaux", animaux);

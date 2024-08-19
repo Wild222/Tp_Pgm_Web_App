@@ -40,6 +40,7 @@
 <!-- Contenu de la page -->
 <header>
     <div class="header">
+
         <h1><fmt:message key="header.bienvenue"/></h1>
         <p>
         <h3><fmt:message key="header.description"/></h3>
