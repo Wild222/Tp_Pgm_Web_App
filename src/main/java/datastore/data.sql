@@ -10,12 +10,12 @@ INSERT INTO ProduitsAnimaux (nom, description, quantiteDisponible, prix) VALUES
                                                                              ('Terrarium pour reptiles', 'Terrarium en verre pour reptiles avec éclairage LED intégré.', 30, 89.99),
                                                                              ('Litière pour rongeurs', 'Litière biodégradable pour lapins.', 100, 14.25);
 
-INSERT INTO TypeAnimal (nom, sexe, prixAnimal, imageUrl) VALUES
-                                                   ('Chien', 'M', 200.0,'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/labradorR.jpeg'),
-                                                   ('Chat', 'F', 150.0, 'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/chat1.jpg'),
-                                                   ('Cheval', 'M', 1000.0,'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/cheval1.jpg'),
-                                                   ('Oiseau', 'F', 50.0, 'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/perroquet.jpg'),
-                                                   ('Hamster', 'F', 56.34, 'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/hamster1.jpg'),
-                                                   ('Cobbaye', 'M', 44.32, 'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/cobbaye.jpg');
+INSERT INTO TypeAnimal (nom, sexe, quantiteDisponible, prixAnimal, imageUrl) VALUES
+                                                                                 ('Chien', 'M', 10, 200.0, 'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/labradorR.jpeg'),
+                                                                                 ('Chat', 'F', 15, 150.0, 'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/chat1.jpg'),
+                                                                                 ('Cheval', 'M', 5, 1000.0, 'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/cheval1.jpg'),
+                                                                                 ('Oiseau', 'F', 20, 50.0, 'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/perroquet.jpg'),
+                                                                                 ('Hamster', 'F', 25, 56.34, 'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/hamster1.jpg'),
+                                                                                 ('Cobbaye', 'M', 8, 44.32, 'http://localhost:8080/TP_Pgm_Web_App-1.0-SNAPSHOT/images/cobbaye.jpg');
 
 

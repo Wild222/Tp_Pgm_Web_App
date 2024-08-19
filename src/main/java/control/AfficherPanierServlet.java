@@ -50,7 +50,6 @@ public class AfficherPanierServlet extends HttpServlet {
 
             if (animalIdStr != null && !animalIdStr.isEmpty()) {
                 try {
-                    // Parse the animalId string to an integer
                     int animalId = Integer.parseInt(animalIdStr);
                      session = request.getSession();
                     if (panier != null) {
@@ -60,15 +59,15 @@ public class AfficherPanierServlet extends HttpServlet {
                         session.setAttribute("panier", panier);
                         response.sendRedirect("AfficherPanierServlet");
                     } else {
-                        // Handle the case where the cart is not found in the session
+                        // Panier non trouvé
                         System.out.println("Cart not found in session.");
                     }
                 } catch (NumberFormatException e) {
-                    // Handle the case where animalIdStr is not a valid integer
+                    // Si animalId n'est pas un entier
                     System.out.println("Invalid animal ID format: " + animalIdStr);
                 }
             } else {
-                // Handle the case where the animalId parameter is missing or empty
+                // Si animalId n'est pas la
                 System.out.println("Animal ID parameter is missing or empty.");
             }
             request.setAttribute("animaux", animaux);

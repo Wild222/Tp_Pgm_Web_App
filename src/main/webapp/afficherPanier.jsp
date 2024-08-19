@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
@@ -11,7 +10,7 @@
     <title>Votre Panier</title>
 </head>
 <body>
-<!--Barre de naviguation-->
+<!--Barre de navigation-->
 <nav>
     <ul>
         <li><a href="acceuil.jsp">Accueil</a></li>
@@ -35,46 +34,48 @@
                     <th>Nom</th>
                     <th>Sexe</th>
                     <th>Prix</th>
-                    <th>Quantité</th>
+                    <th>QuantitÃ©</th>
                     <th>Total</th>
                 </tr>
                 </thead>
                 <tbody>
-                <!--Récupération des donner de la servlet-->
+                <!-- RÃ©cupÃ©ration des donnÃ©es de la servlet -->
                 <c:set var="total" value="0"/>
                 <c:forEach var="animal" items="${animaux}">
                     <c:set var="quantite" value="${animal.quantite}"/>
                     <c:set var="animalTotal" value="${animal.prixAnimal * quantite}"/>
-                    <!--Prend le total actuel et ajoute si un animal est ajouter-->
+                    <!-- Met Ã  jour le total -->
                     <c:set var="total" value="${total + animalTotal}"/>
-                     <tr>
-                    <!--Affichage des animaux qui sont ajouter au panier-->
+                    <tr>
                         <td>${animal.nom}</td>
                         <td>${animal.sexe}</td>
-                        <td><fmt:formatNumber value="${animal.prixAnimal}" type="number" maxFractionDigits="2"/></td>
                         <td>
-                            <!--Lorsque que l'utilisateur appuie sur ajouter ca envoie l'information a la servlet ajouteranimal-->
-
-                        <form action="AjouterAnimalServlet" method="post">
-                         <input type="hidden" name="animalId" value="${animal.id}"/>
-                          <div class="quantity-button">
-                               <button name="supprimer">-</button>
-                                <p class="quantity">${quantite}</p>
-                                <button name="qty" >+</button>
+                            <!-- Formatage du prix de l'animal -->
+                            <fmt:formatNumber value="${animal.prixAnimal}" type="number" maxFractionDigits="2" minFractionDigits="2"/>
+                        </td>
+                        <td>
+                            <!-- Formulaire pour ajuster la quantitÃ© -->
+                            <form action="AjouterAnimalServlet" method="post">
+                                <input type="hidden" name="animalId" value="${animal.id}"/>
+                                <div class="quantity-button">
+                                    <button name="supprimer">-</button>
+                                    <p class="quantity">${quantite}</p>
+                                    <button name="qty">+</button>
                                 </div>
                             </form>
                         </td>
                         <td>
-                            <fmt:formatNumber value="${animalTotal}" type="number" maxFractionDigits="2"/>
-                            <form action="AfficherPanierServlet" method="post" >
+                            <!-- Formatage du total pour l'animal -->
+                            <fmt:formatNumber value="${animalTotal}" type="number" maxFractionDigits="2" minFractionDigits="2"/>
+                            <form action="AfficherPanierServlet" method="post">
                                 <input type="hidden" name="animalId" value="${animal.id}"/>
-                                <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet animal ?');">Supprimer</button>
+                                <button type="submit" onclick="return confirm('ÃŠtes-vous sÃ»r de vouloir supprimer cet animal ?');">Supprimer</button>
                             </form>
                         </td>
                     </tr>
                 </c:forEach>
 
-                <!--Donner des valeur au taxe et total d'une commande-->
+                <!-- Calcul des taxes et des totaux -->
                 <c:set var="tps" value="${total * 0.05}"/>
                 <c:set var="tvq" value="${total * 0.09975}"/>
                 <c:set var="totauxAvTaxe" value="${total}"/>
@@ -83,40 +84,35 @@
                 <tr>
                     <td style="background-color: transparent" colspan="3"></td>
                     <td>Total</td>
-                    <!--
-                    1-Formater les nombre pour qu'il soit maximum 2 chiffre apres la virgule
-                    2-Affiche le total avant les taxes
-                    -->
-                    <td><fmt:formatNumber value="${totauxAvTaxe}" type="number" maxFractionDigits="2" /></td>
+                    <td>
+                        <!-- Formatage du total avant taxes -->
+                        <fmt:formatNumber value="${totauxAvTaxe}" type="number" maxFractionDigits="2" minFractionDigits="2"/>
+                    </td>
                 </tr>
                 <tr>
                     <td style="background-color: transparent" colspan="3"></td>
                     <td>TPS 5%</td>
-                    <!--
-                    1-Formater les nombre pour qu'il soit maximum 2 chiffre apres la virgule
-                    2-Affiche le total des taxes pour la tps
-                    -->
-                    <td><fmt:formatNumber value="${tps}" type="number" maxFractionDigits="2" /></td>
+                    <td>
+                        <!-- Formatage de la TPS -->
+                        <fmt:formatNumber value="${tps}" type="number" maxFractionDigits="2" minFractionDigits="2"/>
+                    </td>
                 </tr>
                 <tr>
                     <td style="background-color: transparent" colspan="3"></td>
-                    <td>TVQ 9,9975%</td>
-                    <!--
-                    1-Formater les nombre pour qu'il soit maximum 2 chiffre apres la virgule
-                    2-Affiche le total des taxes pour la tvq
-                    -->
-                    <td><fmt:formatNumber value="${tvq}" type="number" maxFractionDigits="2" /></td>
+                    <td>TVQ 9.9975%</td>
+                    <td>
+                        <!-- Formatage de la TVQ -->
+                        <fmt:formatNumber value="${tvq}" type="number" maxFractionDigits="2" minFractionDigits="2"/>
+                    </td>
                 </tr>
                 <tr>
                     <td style="background-color: transparent" colspan="3"></td>
-                    <td>Total Apres Taxe</td>
-                    <!--
-                    1-Formater les nombre pour qu'il soit maximum 2 chiffre apres la virgule
-                    2-Affiche le total apres les taxes
-                    -->
-                    <td><fmt:formatNumber value="${totauxApTaxe}" type="number" maxFractionDigits="2" /></td>
+                    <td>Total Avec les Taxes</td>
+                    <td>
+                        <!-- Formatage du total aprÃ¨s taxes -->
+                        <fmt:formatNumber value="${totauxApTaxe}" type="number" maxFractionDigits="2" minFractionDigits="2"/>
+                    </td>
                 </tr>
-
 
                 </tbody>
             </table>
@@ -124,7 +120,13 @@
     </c:otherwise>
 </c:choose>
 
-<!--Ajout de la variable pour la récuperer dans checkout.jsp-->
-<a href="checkout.jsp?total=${totauxApTaxe}">Payer votre facture ICI</a>
+<!-- Formulaire pour la facturation -->
+<form action="UpdateBBDServlet" method="post">
+    <c:forEach var="animal" items="${animaux}">
+        <input type="hidden" name="animalId" value="${animal.id}"/>
+        <input type="hidden" name="qty_${animal.id}" value="${animal.quantite}"/>
+    </c:forEach>
+    <button type="submit"><a style="text-decoration-line: none; color: #212429" href="checkout.jsp?total=${totauxApTaxe}">Payer Votre Commande ICI</a></button>
+</form>
 </body>
 </html>

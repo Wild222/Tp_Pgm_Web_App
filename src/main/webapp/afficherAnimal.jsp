@@ -1,13 +1,13 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page isELIgnored="false"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false" %>
+<%@ page session="true" %>
 
-<fmt:setLocale value="${param.lang}" />
-<!-- Définir le bundle de messages -->
+<fmt:setLocale value="${sessionScope.lang != null ? sessionScope.lang : 'fr_CA'}"/>
 <fmt:setBundle basename="ChoixLangue"/>
 
-<html lang="${param.lang}">
+<html lang="${sessionScope.lang != null ? sessionScope.lang : 'fr_CA'}">
 <head>
     <meta charset="UTF-8">
 
@@ -39,38 +39,42 @@
 
             </div>
         </li>
-
-        <li><a href="?lang=en_US"><fmt:message key="nav.select.anglais" /></a></li>
-        <li><a href="?lang=fr_CA"><fmt:message key="nav.select.francais" /></a></li>
+        <li>
+            <form action="change-language" method="get">
+                <select name="lang" onchange="this.form.submit()">
+                    <option value="fr_CA" style="text-align: center" <c:if test="${sessionScope.lang == 'fr_CA'}">selected</c:if>><fmt:message key="nav.select.francais" /></option>
+                    <option value="en_US" style="text-align: center" <c:if test="${sessionScope.lang == 'en_US'}">selected</c:if>><fmt:message key="nav.select.anglais" /></option>
+                </select>
+            </form>
+        </li>
     </ul>
 </nav>
 
 <div id="dogCardsContainer">
-
-
     <c:forEach var="animal" items="${animaux}">
         <div class="card">
 
             <img class="card-img-top" src="${animal.imageUrl}"/>
             <p class="descript-dest">
                 <c:out value="${animal.nom}"/>
-                (<c:out value="${animal.sexe}"/>) <br>
-                <fmt:message key="section.typeAnimal.prix"/><c:out value="${animal.prixAnimal}"/>
+                (<c:out value="${animal.sexe}"/>)<br>
+                <fmt:message key="section.typeAnimal.quantiterDisp"/>&nbsp;<c:out value="${animal.quantiteDisponible}"/><br>
+                <fmt:message key="section.typeAnimal.prix"/>&nbsp;<c:out value="${animal.prixAnimal}$"/>
 
             </p>
                     <!--Lorsque que l'utilisateur appuie sur ajouter ca envoie l'information a la servlet ajouteranimal-->
                     <form action="AjouterAnimalServlet" method="post">
                         <input type="hidden" name="animalId" value="${animal.id}"/>
-                        <b><fmt:message key="section.typeAnimal.quantiter"/></b><input style="width: 50px" type="number" name="qty" SIZE="3" value=1 min="1">
+                        <b><fmt:message key="section.typeAnimal.quantiter"/></b><input style="width: 50px; text-align: center" type="number" name="qty" SIZE="3" value=1 min="1">
                         &nbsp;
                         <input class="bouton" type="submit" value="<fmt:message key="section.typeAnimal.ajouter"/>" name="ajouter" />
                     </form>
 
         </div>
     </c:forEach>
-
+</div>
 
     <script src="${pageContext.request.contextPath}/javaScript/afficherAnimal.js"></script>
-</div>
+
 </body>
 </html>

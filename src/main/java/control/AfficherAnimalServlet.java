@@ -24,6 +24,10 @@ public class AfficherAnimalServlet extends HttpServlet {
             DB_Connector dbConnector = new DB_Connector();
             connection = dbConnector.getConnection();
 
+            //Lire les produit dans la base de données
+
+
+            // Lire les animaux depuis la base de données
             TypeAnimalDAO_JDBC afficherAnimal = new TypeAnimalDAO_JDBC(connection);
             List<TypeAnimal> listeAnimaux = afficherAnimal.afficherTypeAnimal();
 

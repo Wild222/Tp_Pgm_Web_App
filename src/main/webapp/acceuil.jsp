@@ -1,13 +1,13 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page isELIgnored="false"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false" %>
+<%@ page session="true" %>
 
-<fmt:setLocale value="${param.lang}" />
-<!-- Définir le bundle de messages -->
+<fmt:setLocale value="${sessionScope.lang != null ? sessionScope.lang : 'fr_CA'}"/>
 <fmt:setBundle basename="ChoixLangue"/>
 
-<html lang="${param.lang}">
+<html lang="${sessionScope.lang != null ? sessionScope.lang : 'fr_CA'}">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/acceuil.css">
@@ -24,13 +24,12 @@
         <li><a href="afficherPanier.jsp"><fmt:message key="nav.panier"/></a></li>
         <li><a href="checkout.jsp"><fmt:message key="nav.paiement"/></a></li>
         <li>
-
-
-                <li><a href="?lang=en_US"><fmt:message key="nav.select.anglais" /></a></li>
-
-                <li><a href="?lang=fr_CA"><fmt:message key="nav.select.francais" /></a></li>
-
-
+            <form action="change-language" method="get">
+                <select name="lang" onchange="this.form.submit()">
+                    <option value="fr_CA" <c:if test="${sessionScope.lang == 'fr_CA'}">selected</c:if>><fmt:message key="nav.select.francais" /></option>
+                    <option value="en_US" <c:if test="${sessionScope.lang == 'en_US'}">selected</c:if>><fmt:message key="nav.select.anglais" /></option>
+                </select>
+            </form>
         </li>
     </ul>
 </nav>

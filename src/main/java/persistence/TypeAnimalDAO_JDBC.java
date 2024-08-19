@@ -31,6 +31,7 @@ public class TypeAnimalDAO_JDBC implements ITypeAnimalDAO {
                 animal.setId(resultSet.getInt("id"));
                 animal.setNom(resultSet.getString("nom"));
                 animal.setSexe(resultSet.getString("sexe"));
+                animal.setQuantiteDisponible(resultSet.getInt("quantiteDisponible"));
                 animal.setPrixAnimal(resultSet.getDouble("prixAnimal"));
                 animal.setImageUrl(resultSet.getString("imageUrl"));
                 listeAnimaux.add(animal);
@@ -103,6 +104,7 @@ public class TypeAnimalDAO_JDBC implements ITypeAnimalDAO {
                 typeAnimal.setId(rs.getInt("id"));
                 typeAnimal.setNom(rs.getString("nom"));
                 typeAnimal.setSexe(rs.getString("sexe"));
+                typeAnimal.setQuantiteDisponible(rs.getInt("quantiteDisponible"));
                 typeAnimal.setPrixAnimal(rs.getDouble("prixAnimal"));
                 typeAnimal.setImageUrl(rs.getString("imageUrl"));
                 return typeAnimal;
@@ -112,6 +114,32 @@ public class TypeAnimalDAO_JDBC implements ITypeAnimalDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
 
+        }
+    }
+
+    public void getQuantiterDisponibleById(int i) {
+        try {
+            PreparedStatement pst = this.connection.prepareStatement(SQL_BOX.GET_QUANTITER_DISPONIBLE_BY_ID);
+            pst.setInt(1, i);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                TypeAnimal typeAnimal = new TypeAnimal();
+                typeAnimal.setQuantiteDisponible(rs.getInt("quantiteDisponible"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void updateTypeAnimalQuantiterParId(TypeAnimal typeAnimal, int i) {
+        try {
+            PreparedStatement pst = this.connection.prepareStatement(SQL_BOX.UPDATE_TYPE_ANIMAL_QUANTITER_BY_ID);
+            pst.setInt(1, typeAnimal.getQuantiteDisponible());
+            pst.setInt(2, typeAnimal.getId());
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 }

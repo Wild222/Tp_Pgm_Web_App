@@ -1,41 +1,26 @@
 package model;
 
 public class TypeAnimal {
-    private int id; 
+    private int id;
     private String nom;
     private String sexe;
     private int quantite;
+    private int quantiteDisponible;
     private double prixAnimal;
     private String imageUrl;
 
-    public TypeAnimal(String nom,  String sexe,double prixAnimal, String imageUrl) {
+    public TypeAnimal(int id, String nom, String sexe, int quantite, int quantiteDisponible, double prixAnimal, String imageUrl) {
+        this.id = id;
         this.nom = nom;
         this.sexe = sexe;
+        this.quantite = quantite;
+        this.quantiteDisponible = quantiteDisponible;
         this.prixAnimal = prixAnimal;
         this.imageUrl = imageUrl;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
     public TypeAnimal() {
-
-    }
-
-    @Override
-    public String toString() {
-        return "TypeAnimal{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
-                ", sexe='" + sexe + '\'' +
-                ", prixAnimal=" + prixAnimal +
-                ", imageUrl='" + imageUrl + '\'' +
-                '}';
+        // Default constructor
     }
 
     public int getId() {
@@ -62,6 +47,14 @@ public class TypeAnimal {
         this.sexe = sexe;
     }
 
+    public int getQuantiteDisponible() {
+        return quantiteDisponible;
+    }
+
+    public void setQuantiteDisponible(int quantiteDisponible) {
+        this.quantiteDisponible = quantiteDisponible;
+    }
+
     public double getPrixAnimal() {
         return prixAnimal;
     }
@@ -70,11 +63,31 @@ public class TypeAnimal {
         this.prixAnimal = prixAnimal;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     public int getQuantite() {
         return quantite;
     }
+
     public void setQuantite(int quantite) {
         this.quantite = quantite;
+    }
+
+    @Override
+    public String toString() {
+        return "TypeAnimal{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", sexe='" + sexe + '\'' +
+                ", quantiteDisponible=" + quantiteDisponible +
+                ", prixAnimal=" + prixAnimal +
+                ", imageUrl='" + imageUrl + '\'' +
+                '}';
     }
 }

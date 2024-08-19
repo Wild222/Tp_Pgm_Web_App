@@ -1,15 +1,19 @@
 body {
-    background-color: #3498db;
+    font-family: Helvetica;
+    padding: 10px 40px 40px 40px;
+    height: 100%;
+    background-color: #8e44ad;
 }
 
 .component {
+
+}
+
+.form-container {
     width: 60%;
     margin: 5rem auto;
     padding: 1rem;
     background-color: #82c1cc;
-}
-
-.form-container {
     display: flex;
     align-items: stretch;
 }

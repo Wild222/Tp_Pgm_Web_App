@@ -11,7 +11,7 @@ CREATE TABLE TypeAnimal (
                             id INT AUTO_INCREMENT PRIMARY KEY,
                             nom VARCHAR(50) NOT NULL,
                             sexe VARCHAR(1) NOT NULL,
+                            quantiteDisponible INT NOT NULL,
                             prixAnimal DOUBLE NOT NULL,
-                            imageUrl varchar(255)
+                            imageUrl VARCHAR(255)
 );
-

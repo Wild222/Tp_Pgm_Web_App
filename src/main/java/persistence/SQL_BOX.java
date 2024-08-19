@@ -28,4 +28,8 @@ public class SQL_BOX {
     public  static final String RECHERCHER_PRIX_TYPE_ANIMAL_PAR_ID = "SELECT prixAnimal, nom, sexe FROM TypeAnimal WHERE id = ?";
 
     public static final String RECHERCHER_TYPE_ANIMAL_PAR_ID = "SELECT * FROM TypeAnimal WHERE id = ?";
+
+    public static final String UPDATE_TYPE_ANIMAL_QUANTITER_BY_ID = "UPDATE TypeAnimal SET quantiteDisponible = ? WHERE id = ?";
+
+    public static final String GET_QUANTITER_DISPONIBLE_BY_ID = "SELECT quantiteDisponible FROM TypeAnimal WHERE id = ?";
 }
