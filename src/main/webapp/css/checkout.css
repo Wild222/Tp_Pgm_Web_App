@@ -1,12 +1,9 @@
-html{
-    font-family: Helvetica;
-    padding: 10px 40px 40px 40px;
-    height:100%;
-    background-image: linear-gradient(to right top, #8e44ad 30%, #3498db 100%);
+body {
+    background-color: #3498db;
 }
 
 .component {
-    width: 80%;
+    width: 60%;
     margin: 5rem auto;
     padding: 1rem;
     background-color: #82c1cc;
@@ -14,7 +11,7 @@ html{
 
 .form-container {
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
 }
 
 table {
@@ -22,8 +19,16 @@ table {
     margin-right: 1rem;
     border-collapse: separate;
     border-spacing: 10px;
-    text-align: start;
+    text-align: center;
 }
+
+
+
+.boutonCheckout{
+    width: fit-content;
+    height: 65px;
+}
+
 .image img {
     max-width: 100%;
     height: auto;
@@ -64,7 +69,6 @@ table {
     -webkit-tap-highlight-color: transparent;
     overflow: hidden;
     transition: transform 0.3s ease;
-    margin-left: 250px;
     margin-bottom: 100px;
 }
 .order span {

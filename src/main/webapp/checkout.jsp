@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: gabla
-  Date: 12/08/2024
-  Time: 13:24
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -28,7 +21,7 @@
     <!--Barre de naviguation-->
     <nav>
         <ul>
-            <li><a href="acceuil.html">Accueil</a></li>
+            <li><a href="acceuil.jsp">Accueil</a></li>
             <li><a href="#">Produit</a></li>
             <li><a href="AfficherAnimalServlet">Animal</a></li>
             <li><a href="afficherPanier.jsp">Panier</a></li>
@@ -36,7 +29,7 @@
         </ul>
     </nav>
 
-    <form class="component" name="maFormCheckout" action="vide">
+    <div class="component">
         <div class="form-container">
             <table border="1">
                 <thead>
@@ -90,34 +83,41 @@
                     </td>
                 </tr>
 
+                <tr>
+                    <td class="boutonCheckout">
+                        <!--Bouton trouver sur internet je l'aimais-->
+                        <button class="order">
+                            <span class="default">Terminer Votre Commande</span>
+                            <span class="success">Commande Effectuer
+                                <svg viewbox="0 0 12 10">
+                                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                </svg>
+                            </span>
+                            <div class="box"></div>
+                            <div class="truck">
+                                <div class="back"></div>
+                                <div class="front">
+                                    <div class="window"></div>
+                                </div>
+                                <div class="light top"></div>
+                                <div class="light bottom"></div>
+                            </div>
+                            <div class="lines"></div>
+                        </button>
+                    </td>
+                </tr>
+
+
                 </tbody>
             </table>
             <div class="image">
                 <img src="images/petStore.jpeg" alt="store">
             </div>
         </div>
-    </form>
-
-
-
-    <!--Bouton trouver sur internet je l'aimais-->
-<button class="order"><span class="default">Terminer Votre Commande</span><span class="success">Commande Effectuer
-    <svg viewbox="0 0 12 10">
-      <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-    </svg></span>
-    <div class="box"></div>
-    <div class="truck">
-        <div class="back"></div>
-        <div class="front">
-            <div class="window"></div>
-        </div>
-        <div class="light top"></div>
-        <div class="light bottom"></div>
     </div>
-    <div class="lines"></div> </button>
+
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
 <script src="javaScript/checkout.js"></script>
 </div>
 </body>
-
 </html>

@@ -1,8 +1,13 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page isELIgnored="false"%>
 
-<!DOCTYPE html>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
+<fmt:setLocale value="${param.lang}" />
+<!-- Définir le bundle de messages -->
+<fmt:setBundle basename="ChoixLangue"/>
+
+<html lang="${param.lang}">
 <head>
     <meta charset="UTF-8">
 
@@ -17,11 +22,12 @@
 <!--Barre de naviguation-->
 <nav>
     <ul>
-        <li><a href="acceuil.jsp">Accueil</a></li>
-        <li><a href="#">Produit</a></li>
-        <li><a href="#">Animal</a></li>
-        <li><a href="AfficherPanierServlet">Panier</a></li>
-        <li><a href="checkout.jsp">Retour au Paiement</a></li>
+        <li><a href="acceuil.jsp"><fmt:message key="nav.acceuil"/></a></li>
+        <li><a href="#"><fmt:message key="nav.produit"/></a></li>
+        <li><a href="#"><fmt:message key="nav.animal"/></a></li>
+        <li><a href="afficherPanier.jsp"><fmt:message key="nav.panier"/></a></li>
+        <li><a href="checkout.jsp"><fmt:message key="nav.paiement"/></a></li>
+
         <li>
             <div id="basketCounterContainer">
                 <a style="color: white;" href="AfficherPanierServlet">
@@ -33,6 +39,9 @@
 
             </div>
         </li>
+
+        <li><a href="?lang=en_US"><fmt:message key="nav.select.anglais" /></a></li>
+        <li><a href="?lang=fr_CA"><fmt:message key="nav.select.francais" /></a></li>
     </ul>
 </nav>
 
@@ -46,15 +55,15 @@
             <p class="descript-dest">
                 <c:out value="${animal.nom}"/>
                 (<c:out value="${animal.sexe}"/>) <br>
-                Prix: <c:out value="${animal.prixAnimal}"/>
+                <fmt:message key="section.typeAnimal.prix"/><c:out value="${animal.prixAnimal}"/>
 
             </p>
                     <!--Lorsque que l'utilisateur appuie sur ajouter ca envoie l'information a la servlet ajouteranimal-->
                     <form action="AjouterAnimalServlet" method="post">
                         <input type="hidden" name="animalId" value="${animal.id}"/>
-                        <b>Quantiter: </b><input style="width: 50px" type="number" name="qty" SIZE="3" value=1 min="1">
+                        <b><fmt:message key="section.typeAnimal.quantiter"/></b><input style="width: 50px" type="number" name="qty" SIZE="3" value=1 min="1">
                         &nbsp;
-                        <input class="bouton" type="submit" value="Ajouter Au Panier" name="ajouter" />
+                        <input class="bouton" type="submit" value="<fmt:message key="section.typeAnimal.ajouter"/>" name="ajouter" />
                     </form>
 
         </div>

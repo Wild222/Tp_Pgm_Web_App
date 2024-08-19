@@ -14,7 +14,7 @@
 <!--Barre de naviguation-->
 <nav>
     <ul>
-        <li><a href="acceuil.html">Accueil</a></li>
+        <li><a href="acceuil.jsp">Accueil</a></li>
         <li><a href="#">Produit</a></li>
         <li><a href="AfficherAnimalServlet">Animal</a></li>
         <li><a href="#">Panier</a></li>
@@ -37,13 +37,9 @@
                     <th>Prix</th>
                     <th>Quantité</th>
                     <th>Total</th>
-                    <th>Modifier</th>
-
-
                 </tr>
                 </thead>
                 <tbody>
-
                 <!--Récupération des donner de la servlet-->
                 <c:set var="total" value="0"/>
                 <c:forEach var="animal" items="${animaux}">
@@ -51,7 +47,7 @@
                     <c:set var="animalTotal" value="${animal.prixAnimal * quantite}"/>
                     <!--Prend le total actuel et ajoute si un animal est ajouter-->
                     <c:set var="total" value="${total + animalTotal}"/>
-
+                     <tr>
                     <!--Affichage des animaux qui sont ajouter au panier-->
                         <td>${animal.nom}</td>
                         <td>${animal.sexe}</td>
@@ -65,22 +61,16 @@
                                <button name="supprimer">-</button>
                                 <p class="quantity">${quantite}</p>
                                 <button name="qty" >+</button>
-
                                 </div>
                             </form>
-
                         </td>
-
-
-                        <td><fmt:formatNumber value="${animalTotal}" type="number" maxFractionDigits="2"/></td>
-
-                        <td><form action="AfficherPanierServlet" method="post" >
-                        <input type="hidden" name="animalId" value="${animal.id}"/>
-                        <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet animal ?');">Supprimer</button>
-                    </form>
-                    </td>
-
-
+                        <td>
+                            <fmt:formatNumber value="${animalTotal}" type="number" maxFractionDigits="2"/>
+                            <form action="AfficherPanierServlet" method="post" >
+                                <input type="hidden" name="animalId" value="${animal.id}"/>
+                                <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet animal ?');">Supprimer</button>
+                            </form>
+                        </td>
                     </tr>
                 </c:forEach>
 

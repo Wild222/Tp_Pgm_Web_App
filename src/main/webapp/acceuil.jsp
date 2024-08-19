@@ -7,8 +7,6 @@
 <!-- Définir le bundle de messages -->
 <fmt:setBundle basename="ChoixLangue"/>
 
-
-
 <html lang="${param.lang}">
 <head>
     <meta charset="UTF-8">
