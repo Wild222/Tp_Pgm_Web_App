@@ -1,24 +1,21 @@
-body{
+body {
     font-family: Helvetica;
-    background: rgba( 71, 147, 227, 1);
-        min-height: 100vh;
-        font-family: Roboto, Arial;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    padding: 10px 40px 40px 40px;
+    height: 100%;
+    background-color: #8e44ad;
 }
 
 .component {
-    width: 80%;
-    margin: 5rem auto;
-    padding: 1rem;
-    background-color: #82c1cc;
 
 }
 
 .form-container {
+    width: 60%;
+    margin: 5rem auto;
+    padding: 1rem;
+    background-color: #82c1cc;
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
 }
 
 table {
@@ -26,8 +23,16 @@ table {
     margin-right: 1rem;
     border-collapse: separate;
     border-spacing: 10px;
-    text-align: start;
+    text-align: center;
 }
+
+
+
+.boutonCheckout{
+    width: fit-content;
+    height: 65px;
+}
+
 .image img {
     max-width: 100%;
     height: auto;
@@ -68,7 +73,6 @@ table {
     -webkit-tap-highlight-color: transparent;
     overflow: hidden;
     transition: transform 0.3s ease;
-    margin-left: 250px;
     margin-bottom: 100px;
 }
 .order span {

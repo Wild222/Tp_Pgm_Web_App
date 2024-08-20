@@ -45,7 +45,31 @@ public class AfficherPanierServlet extends HttpServlet {
                     animaux.add(animal);
                 }
             }
+            //supprimer un animal du panier (ligne)
+            String animalIdStr = request.getParameter("animalId");
 
+            if (animalIdStr != null && !animalIdStr.isEmpty()) {
+                try {
+                    int animalId = Integer.parseInt(animalIdStr);
+                     session = request.getSession();
+                    if (panier != null) {
+                        // Supprimer animal du panier
+                        panier.removeIf(item -> item.getId() == animalId);
+                        // mettre a jour le panier
+                        session.setAttribute("panier", panier);
+                        response.sendRedirect("AfficherPanierServlet");
+                    } else {
+                        // Panier non trouvé
+                        System.out.println("Cart not found in session.");
+                    }
+                } catch (NumberFormatException e) {
+                    // Si animalId n'est pas un entier
+                    System.out.println("Invalid animal ID format: " + animalIdStr);
+                }
+            } else {
+                // Si animalId n'est pas la
+                System.out.println("Animal ID parameter is missing or empty.");
+            }
             request.setAttribute("animaux", animaux);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/afficherPanier.jsp");
             dispatcher.forward(request, response);

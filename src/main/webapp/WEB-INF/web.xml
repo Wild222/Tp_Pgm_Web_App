@@ -9,6 +9,14 @@
         <url-pattern>AfficherAnimalServlet</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>AfficherProduitServlet</servlet-name>
+        <servlet-class>control.AfficherProduitServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AfficherProduitServlet</servlet-name>
+        <url-pattern>AfficherProduitServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>AfficherPanierServlet</servlet-name>
         <servlet-class>control.AfficherPanierServlet</servlet-class>
     </servlet>
@@ -16,12 +24,10 @@
         <servlet-name>AfficherPanierServlet</servlet-name>
         <url-pattern>/AfficherPanierServlet</url-pattern>
     </servlet-mapping>
-
     <servlet>
         <servlet-name>AjouterAnimalServlet</servlet-name>
         <servlet-class>control.AjouterAnimalServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>AjouterAnimalServlet</servlet-name>
         <url-pattern>/AjouterAnimalServlet</url-pattern>
@@ -29,8 +35,8 @@
 
 
 
-
     <welcome-file-list>
+        <welcome-file>acceuil.jsp</welcome-file>
         <welcome-file>acceuil.html</welcome-file>
     </welcome-file-list>
     <jsp-config>
@@ -43,4 +49,6 @@
             <taglib-location>/WEB-INF/tld/fmt.tld</taglib-location>
         </taglib>
     </jsp-config>
+
+
 </web-app>

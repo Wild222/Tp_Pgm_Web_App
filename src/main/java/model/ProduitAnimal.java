@@ -4,21 +4,24 @@ public class ProduitAnimal {
     private int id; 
     private String nom;
     private String description;
+    private int quantiteDisponible;
     private int quantite;
     private double prix;
+    private String imageUrl;
 
 
     // Constructeur par défaut
     public ProduitAnimal() {
     }
 
-    // Constructeur avec paramètres
-    public ProduitAnimal( String nom, String description, int quantite,double prix) {
+    public ProduitAnimal(int id, String nom, String description, int quantiteDisponible, int quantite, double prix, String imageUrl) {
+        this.id = id;
         this.nom = nom;
         this.description = description;
+        this.quantiteDisponible = quantiteDisponible;
         this.quantite = quantite;
         this.prix = prix;
-
+        this.imageUrl = imageUrl;
     }
 
     // Getters et Setters
@@ -62,15 +65,31 @@ public class ProduitAnimal {
         this.quantite = quantite;
     }
 
-    // Méthode toString pour l'affichage
+    public int getQuantiteDisponible() {
+        return quantiteDisponible;
+    }
+
+    public void setQuantiteDisponible(int quantiteDisponible) {
+        this.quantiteDisponible = quantiteDisponible;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     @Override
     public String toString() {
         return "ProduitAnimal{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", description='" + description + '\'' +
-                ", prix=" + prix +
+                ", quantiteDisponible=" + quantiteDisponible +
                 ", quantite=" + quantite +
+                ", prix=" + prix +
                 '}';
     }
 }
