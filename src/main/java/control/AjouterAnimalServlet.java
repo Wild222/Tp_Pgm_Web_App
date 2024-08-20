@@ -20,7 +20,7 @@ import java.util.List;
 public class AjouterAnimalServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String produitId = request.getParameter("animalId");
+        String produitId = request.getParameter("produitId");
         if (produitId == null || produitId.isEmpty()) {
             throw new ServletException("Le paramètre 'animalId' est requis.");
         }

@@ -4,7 +4,8 @@ CREATE TABLE ProduitsAnimaux (
                                  nom VARCHAR(100) NOT NULL,
                                  description TEXT,
                                  quantiteDisponible INT NOT NULL,
-                                 prix DOUBLE NOT NULL
+                                 prix DOUBLE NOT NULL,
+                                 imageUrl VARCHAR(255)
 );
 
 CREATE TABLE TypeAnimal (

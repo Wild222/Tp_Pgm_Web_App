@@ -64,7 +64,7 @@
 </form>
 
 <!-- Section Produits -->
-<form action="JSP/afficherProduit.jsp" name="maFormProduit">
+<form action="AfficherProduitServlet" name="maFormProduit">
     <div class="container-reverse">
         <img class="image" src="images/ima_2.jpeg" width="800" height="350" alt="ima_2"/>
         <div class="text-container">

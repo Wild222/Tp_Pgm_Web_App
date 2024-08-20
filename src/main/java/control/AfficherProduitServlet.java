@@ -7,16 +7,17 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.TypeAnimal;
-import persistence.TypeAnimalDAO_JDBC;
+import model.ProduitAnimal;
+import persistence.ProduitAnimalDAO_JDBC;
+
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "AfficherAnimalServlet", value = "/AfficherAnimalServlet")
-public class AfficherAnimalServlet extends HttpServlet {
+@WebServlet(name = "AfficherProduitServlet", value = "/AfficherProduitServlet")
+public class AfficherProduitServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,16 +29,16 @@ public class AfficherAnimalServlet extends HttpServlet {
 
 
             // Lire les animaux depuis la base de données
-            TypeAnimalDAO_JDBC afficherAnimal = new TypeAnimalDAO_JDBC(connection);
-            List<TypeAnimal> listeAnimaux = afficherAnimal.afficherTypeAnimal();
+            ProduitAnimalDAO_JDBC afficherProduit = new ProduitAnimalDAO_JDBC(connection);
+            List<ProduitAnimal> listeProduit = afficherProduit.afficherProduitAnimal();
 
             // Ajouter la liste d'animaux au contexte HTTP
-            request.setAttribute("listeAnimaux", listeAnimaux);
-            request.setAttribute("animaux", listeAnimaux);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/afficherAnimal.jsp");
+            request.setAttribute("listeProduit", listeProduit);
+            request.setAttribute("produits", listeProduit);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("afficherProduit.jsp");
             dispatcher.forward(request, response);
         } catch (Exception e) {
-            throw new ServletException("Erreur lors de l'affichage des animaux", e);
+            throw new ServletException("Erreur lors de l'affichage des produits", e);
         } finally {
             if (connection != null) {
                 try {
