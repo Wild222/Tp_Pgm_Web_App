@@ -19,7 +19,7 @@
 <nav>
     <ul>
         <li><a href="#"><fmt:message key="nav.acceuil"/></a></li>
-        <li><a href="#"><fmt:message key="nav.produit"/></a></li>
+        <li><a href="AfficherProduitServlet"><fmt:message key="nav.produit"/></a></li>
         <li><a href="AfficherAnimalServlet"><fmt:message key="nav.animal"/></a></li>
         <li><a href="afficherPanier.jsp"><fmt:message key="nav.panier"/></a></li>
         <li><a href="checkout.jsp"><fmt:message key="nav.paiement"/></a></li>
