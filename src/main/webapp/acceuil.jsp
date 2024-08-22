@@ -19,7 +19,7 @@
 <nav>
     <ul>
         <li><a href="#"><fmt:message key="nav.acceuil"/></a></li>
-        <li><a href="AfficherProduitServlet"><fmt:message key="nav.produit"/></a></li>
+        <li><a href="#"><fmt:message key="nav.produit"/></a></li>
         <li><a href="AfficherAnimalServlet"><fmt:message key="nav.animal"/></a></li>
         <li><a href="afficherPanier.jsp"><fmt:message key="nav.panier"/></a></li>
         <li><a href="checkout.jsp"><fmt:message key="nav.paiement"/></a></li>
@@ -64,7 +64,7 @@
 </form>
 
 <!-- Section Produits -->
-<form action="AfficherProduitServlet" name="maFormProduit">
+<form action="#" name="maFormProduit">
     <div class="container-reverse">
         <img class="image" src="images/ima_2.jpeg" width="800" height="350" alt="ima_2"/>
         <div class="text-container">

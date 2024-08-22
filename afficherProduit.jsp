@@ -14,18 +14,18 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/afficherAnimal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="src/main/webapp/css/navbar.css">
     <title>Cartes avec animaux</title>
 </head>
 <body>
 <!--Barre de naviguation-->
 <nav>
     <ul>
-        <li><a href="acceuil.jsp"><fmt:message key="nav.acceuil"/></a></li>
+        <li><a href="src/main/webapp/acceuil.jsp"><fmt:message key="nav.acceuil"/></a></li>
         <li><a href="#"><fmt:message key="nav.produit"/></a></li>
         <li><a href="AfficherAnimalServlet"><fmt:message key="nav.animal"/></a></li>
-        <li><a href="afficherPanier.jsp"><fmt:message key="nav.panier"/></a></li>
-        <li><a href="checkout.jsp"><fmt:message key="nav.paiement"/></a></li>
+        <li><a href="src/main/webapp/afficherPanier.jsp"><fmt:message key="nav.panier"/></a></li>
+        <li><a href="src/main/webapp/checkout.jsp"><fmt:message key="nav.paiement"/></a></li>
 
         <li>
             <div id="basketCounterContainer">

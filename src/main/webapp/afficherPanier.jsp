@@ -44,28 +44,25 @@
                 <c:forEach var="animal" items="${animaux}">
                     <c:set var="quantite" value="${animal.quantite}"/>
                     <c:set var="animalTotal" value="${animal.prixAnimal * quantite}"/>
-                    <!-- Met à jour le total -->
                     <c:set var="total" value="${total + animalTotal}"/>
                     <tr>
-                        <td>${animal.nom}</td>
+                        <td>${animal.nom}<br><p>ID de l'animal: <c:out value="${animal.id}"/></p></td>
                         <td>${animal.sexe}</td>
                         <td>
-                            <!-- Formatage du prix de l'animal -->
                             <fmt:formatNumber value="${animal.prixAnimal}" type="number" maxFractionDigits="2" minFractionDigits="2"/>
                         </td>
                         <td>
-                            <!-- Formulaire pour ajuster la quantité -->
                             <form action="AjouterAnimalServlet" method="post">
                                 <input type="hidden" name="animalId" value="${animal.id}"/>
+                                <input type="hidden" name="qty" value="${quantite}"/>
                                 <div class="quantity-button">
-                                    <button name="supprimer">-</button>
+                                    <button type="submit" name="supprimer" value="true">-</button>
                                     <p class="quantity">${quantite}</p>
-                                    <button name="qty">+</button>
+                                    <button type="submit" name="ajouter" value="true">+</button>
                                 </div>
                             </form>
                         </td>
                         <td>
-                            <!-- Formatage du total pour l'animal -->
                             <fmt:formatNumber value="${animalTotal}" type="number" maxFractionDigits="2" minFractionDigits="2"/>
                             <form action="AfficherPanierServlet" method="post">
                                 <input type="hidden" name="animalId" value="${animal.id}"/>

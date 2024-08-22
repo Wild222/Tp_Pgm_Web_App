@@ -18,7 +18,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/afficherPanier")
+@WebServlet("/afficherPanierServlet")
 public class AfficherPanierServlet extends HttpServlet {
 
     @Override
@@ -58,6 +58,7 @@ public class AfficherPanierServlet extends HttpServlet {
                         // mettre a jour le panier
                         session.setAttribute("panier", panier);
                         response.sendRedirect("AfficherPanierServlet");
+
                     } else {
                         // Panier non trouvé
                         System.out.println("Cart not found in session.");
@@ -76,6 +77,7 @@ public class AfficherPanierServlet extends HttpServlet {
         } catch (Exception e) {
             throw new ServletException("Erreur lors de l'affichage du panier", e);
         } finally {
+
             if (connection != null) {
                 try {
                     connection.close();

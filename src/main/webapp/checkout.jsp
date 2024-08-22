@@ -22,7 +22,7 @@
     <nav>
         <ul>
             <li><a href="acceuil.jsp">Accueil</a></li>
-            <li><a href="AfficherProduitServlet">Produit</a></li>
+            <li><a href="#">Produit</a></li>
             <li><a href="AfficherAnimalServlet">Animal</a></li>
             <li><a href="afficherPanier.jsp">Panier</a></li>
             <li><a href="#">Retour au Paiement</a></li>
