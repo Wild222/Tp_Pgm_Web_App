@@ -45,12 +45,13 @@
     </div>
 </header>
 
+<!-- Section images  -->
 <div class="containerImage">
-    <img src="images/labrador.jpeg">
-    <img src="images/labrador.jpeg">
-    <img src="images/labrador.jpeg">
-    <img src="images/labrador.jpeg">
-    <img src="images/labrador.jpeg">
+    <img src="images/chien1.jpg">
+    <img src="images/chat2.jpeg">
+    <img src="images/cheval2.jpeg">
+    <img src="images/lapin1.jpeg">
+    <img src="images/oiseau1.jpeg">
 </div>
 
 <!-- Section Animaux -->
@@ -71,7 +72,8 @@
         </div>
     </div>
 </form>
-
+<br>
+<br>
 <!-- Section Produits
 <form action="#" name="maFormProduit">
     <div class="container-reverse">

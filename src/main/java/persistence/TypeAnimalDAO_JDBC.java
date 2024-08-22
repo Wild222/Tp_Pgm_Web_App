@@ -30,10 +30,11 @@ public class TypeAnimalDAO_JDBC implements ITypeAnimalDAO {
                 TypeAnimal animal = new TypeAnimal();
                 animal.setId(resultSet.getInt("id"));
                 animal.setNom(resultSet.getString("nom"));
-                animal.setSexe(resultSet.getString("sexe"));
+                animal.setSexe(resultSet.getString("description"));
                 animal.setQuantiteDisponible(resultSet.getInt("quantiteDisponible"));
                 animal.setPrixAnimal(resultSet.getDouble("prixAnimal"));
                 animal.setImageUrl(resultSet.getString("imageUrl"));
+                animal.setType(resultSet.getString("type"));
                 listeAnimaux.add(animal);
                 System.out.println("Animal récupéré : " + animal);
             }
@@ -100,14 +101,15 @@ public class TypeAnimalDAO_JDBC implements ITypeAnimalDAO {
             pst.setInt(1, i);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
-                TypeAnimal typeAnimal = new TypeAnimal();
-                typeAnimal.setId(rs.getInt("id"));
-                typeAnimal.setNom(rs.getString("nom"));
-                typeAnimal.setSexe(rs.getString("sexe"));
-                typeAnimal.setQuantiteDisponible(rs.getInt("quantiteDisponible"));
-                typeAnimal.setPrixAnimal(rs.getDouble("prixAnimal"));
-                typeAnimal.setImageUrl(rs.getString("imageUrl"));
-                return typeAnimal;
+                TypeAnimal animal = new TypeAnimal();
+                animal.setId(rs.getInt("id"));
+                animal.setNom(rs.getString("nom"));
+                animal.setSexe(rs.getString("description"));
+                animal.setQuantiteDisponible(rs.getInt("quantiteDisponible"));
+                animal.setPrixAnimal(rs.getDouble("prixAnimal"));
+                animal.setImageUrl(rs.getString("imageUrl"));
+                animal.setType(rs.getString("type"));
+                return animal;
             } else {
                 return null;
             }

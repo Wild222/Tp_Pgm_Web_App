@@ -15,7 +15,7 @@ public class SQL_BOX {
     public static final String SUPPRIMER_PRODUIT_ANIMAL = "DELETE FROM ProduitsAnimaux WHERE id = ?";
 
     //Type Animal
-    public static final String AFFICHER_TOUT_TYPE_ANIMAL = "SELECT * FROM TypeAnimal";
+    public static final String AFFICHER_TOUT_TYPE_ANIMAL = "SELECT * FROM TypeAnimal order by type asc";
 
     public static final String RECHERCHER_TYPE_ANIMAL_PAR_NOM = "SELECT * FROM TypeAnimal WHERE nom = ?";
 
