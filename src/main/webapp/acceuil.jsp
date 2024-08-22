@@ -12,6 +12,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/acceuil.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" integrity="sha384-CyHh21Aeg5V3tlhDqM0L8n6s0FiMAbWzgTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title><fmt:message key="page.acceuil"/></title>
 </head>
 <body>
@@ -44,6 +45,14 @@
     </div>
 </header>
 
+<div class="containerImage">
+    <img src="images/labrador.jpeg">
+    <img src="images/labrador.jpeg">
+    <img src="images/labrador.jpeg">
+    <img src="images/labrador.jpeg">
+    <img src="images/labrador.jpeg">
+</div>
+
 <!-- Section Animaux -->
 <form action="AfficherAnimalServlet" name="maFormAnimal">
     <div class="container">
@@ -63,7 +72,7 @@
     </div>
 </form>
 
-<!-- Section Produits -->
+<!-- Section Produits
 <form action="#" name="maFormProduit">
     <div class="container-reverse">
         <img class="image" src="images/ima_2.jpeg" width="800" height="350" alt="ima_2"/>
@@ -78,7 +87,11 @@
             <input class="bouton" type="submit" value="<fmt:message key='section.produit.bouton'/>" name="typeProduit"/>
         </div>
     </div>
-</form>
+</form>-->
+
+<!-- Bootstrap Bundle JS (inclut Popper) -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js" integrity="sha384-7s0K/YoK9O23lLPm6MSoB50PQ9tqNmwtpq45d6dI6XgE5AT/Ct8X0MkJkTyyS5N4" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+1gKdf2sO+6LDyJazp4r/jYfZwfg8Z8vzp0w3Ewl" crossorigin="anonymous"></script>
 
 </body>
 </html>
