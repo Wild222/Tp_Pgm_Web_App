@@ -1,3 +1,5 @@
+<!doctype html>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -12,7 +14,6 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/acceuil.css">
     <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" integrity="sha384-CyHh21Aeg5V3tlhDqM0L8n6s0FiMAbWzgTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title><fmt:message key="page.acceuil"/></title>
 </head>
 <body>
@@ -90,10 +91,5 @@
         </div>
     </div>
 </form>-->
-
-<!-- Bootstrap Bundle JS (inclut Popper) -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js" integrity="sha384-7s0K/YoK9O23lLPm6MSoB50PQ9tqNmwtpq45d6dI6XgE5AT/Ct8X0MkJkTyyS5N4" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+1gKdf2sO+6LDyJazp4r/jYfZwfg8Z8vzp0w3Ewl" crossorigin="anonymous"></script>
-
 </body>
 </html>
