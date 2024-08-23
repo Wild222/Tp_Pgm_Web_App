@@ -12,7 +12,6 @@
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/afficherAnimal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/navbar.css">
@@ -23,20 +22,15 @@
 <nav>
     <ul>
         <li><a href="acceuil.jsp"><fmt:message key="nav.acceuil"/></a></li>
-        <li><a href="#"><fmt:message key="nav.produit"/></a></li>
         <li><a href="#"><fmt:message key="nav.animal"/></a></li>
         <li><a href="afficherPanier.jsp"><fmt:message key="nav.panier"/></a></li>
-        <li><a href="checkout.jsp"><fmt:message key="nav.paiement"/></a></li>
-
         <li>
             <div id="basketCounterContainer">
                 <a style="color: white;" href="AfficherPanierServlet">
-                <i class="fas fa-shopping-cart">
-                    &nbsp;
-                    <span id="basketCounter"><c:out value="${quantite}"/></span>
+                <i class="fas fa-shopping-cart">                    &nbsp;
+                    <span id="basketCounter"><c:out value="${sessionScope.quantite}"/></span>
                 </i>
                 </a>
-
             </div>
         </li>
         <li>
@@ -75,7 +69,7 @@
                         &nbsp;
                         <input class="bouton" type="submit" value="<fmt:message key="section.typeAnimal.ajouter"/>" name="ajouter" />
                     </form>
-
+            <p>ID de l'animal: <c:out value="${animal.id}"/></p>
         </div>
     </c:forEach>
 </div>

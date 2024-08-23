@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/afficherPanier.css">
+    <script src="${pageContext.request.contextPath}/javaScript/afficherAnimal.js"></script>
     <link rel="stylesheet" href="css/navbar.css">
     <title>Votre Panier</title>
 </head>
@@ -14,10 +15,17 @@
 <nav>
     <ul>
         <li><a href="acceuil.jsp">Accueil</a></li>
-        <li><a href="#">Produit</a></li>
         <li><a href="AfficherAnimalServlet">Animal</a></li>
         <li><a href="#">Panier</a></li>
-        <li><a href="checkout.jsp">Retour au Paiement</a></li>
+        <li>
+            <div id="basketCounterContainer">
+                <a style="color: white;" href="AfficherPanierServlet">
+                    <i class="fas fa-shopping-cart">                    &nbsp;
+                        <span id="basketCounter"><c:out value="${sessionScope.quantite}"/></span>
+                    </i>
+                </a>
+            </div>
+        </li>
     </ul>
 </nav>
 <h1>Votre Panier</h1>
@@ -44,28 +52,25 @@
                 <c:forEach var="animal" items="${animaux}">
                     <c:set var="quantite" value="${animal.quantite}"/>
                     <c:set var="animalTotal" value="${animal.prixAnimal * quantite}"/>
-                    <!-- Met à jour le total -->
                     <c:set var="total" value="${total + animalTotal}"/>
                     <tr>
-                        <td>${animal.nom}</td>
+                        <td>${animal.nom}<br><p>ID de l'animal: <c:out value="${animal.id}"/></p></td>
                         <td>${animal.sexe}</td>
                         <td>
-                            <!-- Formatage du prix de l'animal -->
                             <fmt:formatNumber value="${animal.prixAnimal}" type="number" maxFractionDigits="2" minFractionDigits="2"/>
                         </td>
                         <td>
-                            <!-- Formulaire pour ajuster la quantité -->
                             <form action="AjouterAnimalServlet" method="post">
                                 <input type="hidden" name="animalId" value="${animal.id}"/>
+                                <input type="hidden" name="qty" value="${quantite}"/>
                                 <div class="quantity-button">
-                                    <button name="supprimer">-</button>
+                                    <button type="submit" name="supprimer" value="true">-</button>
                                     <p class="quantity">${quantite}</p>
-                                    <button name="qty">+</button>
+                                    <button type="submit" name="ajouter" value="true">+</button>
                                 </div>
                             </form>
                         </td>
                         <td>
-                            <!-- Formatage du total pour l'animal -->
                             <fmt:formatNumber value="${animalTotal}" type="number" maxFractionDigits="2" minFractionDigits="2"/>
                             <form action="AfficherPanierServlet" method="post">
                                 <input type="hidden" name="animalId" value="${animal.id}"/>
@@ -82,7 +87,7 @@
                 <c:set var="totauxApTaxe" value="${total + tps + tvq}"/>
 
                 <tr>
-                    <td style="background-color: transparent" colspan="3"></td>
+                    <td colspan="3"></td>
                     <td>Total</td>
                     <td>
                         <!-- Formatage du total avant taxes -->
@@ -90,7 +95,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="background-color: transparent" colspan="3"></td>
+                    <td colspan="3"></td>
                     <td>TPS 5%</td>
                     <td>
                         <!-- Formatage de la TPS -->
@@ -98,7 +103,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="background-color: transparent" colspan="3"></td>
+                    <td colspan="3"></td>
                     <td>TVQ 9.9975%</td>
                     <td>
                         <!-- Formatage de la TVQ -->
@@ -106,7 +111,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="background-color: transparent" colspan="3"></td>
+                    <td colspan="3"></td>
                     <td>Total Avec les Taxes</td>
                     <td>
                         <!-- Formatage du total après taxes -->
@@ -126,7 +131,9 @@
         <input type="hidden" name="animalId" value="${animal.id}"/>
         <input type="hidden" name="qty_${animal.id}" value="${animal.quantite}"/>
     </c:forEach>
-    <button type="submit"><a style="text-decoration-line: none; color: #212429" href="checkout.jsp?total=${totauxApTaxe}">Payer Votre Commande ICI</a></button>
+    <input type="hidden" name="total" value="${totauxApTaxe}"/>
+    <button type="submit">Payer Votre Commande ICI</button>
 </form>
+<script src="${pageContext.request.contextPath}/javaScript/afficherAnimal.js"></script>
 </body>
 </html>

@@ -9,14 +9,6 @@
         <url-pattern>AfficherAnimalServlet</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>AfficherProduitServlet</servlet-name>
-        <servlet-class>control.AfficherProduitServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AfficherProduitServlet</servlet-name>
-        <url-pattern>AfficherProduitServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
         <servlet-name>AfficherPanierServlet</servlet-name>
         <servlet-class>control.AfficherPanierServlet</servlet-class>
     </servlet>

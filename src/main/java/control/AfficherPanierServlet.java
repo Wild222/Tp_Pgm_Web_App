@@ -18,13 +18,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/afficherPanier")
+@WebServlet(name = "AfficherPanierServlet", value = "/afficherPanierServlet")
 public class AfficherPanierServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         Connection connection = null;
+
         try {
             DB_Connector dbConnector = new DB_Connector();
             connection = dbConnector.getConnection();
@@ -58,6 +59,7 @@ public class AfficherPanierServlet extends HttpServlet {
                         // mettre a jour le panier
                         session.setAttribute("panier", panier);
                         response.sendRedirect("AfficherPanierServlet");
+
                     } else {
                         // Panier non trouvé
                         System.out.println("Cart not found in session.");
@@ -66,9 +68,6 @@ public class AfficherPanierServlet extends HttpServlet {
                     // Si animalId n'est pas un entier
                     System.out.println("Invalid animal ID format: " + animalIdStr);
                 }
-            } else {
-                // Si animalId n'est pas la
-                System.out.println("Animal ID parameter is missing or empty.");
             }
             request.setAttribute("animaux", animaux);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/afficherPanier.jsp");
@@ -76,6 +75,7 @@ public class AfficherPanierServlet extends HttpServlet {
         } catch (Exception e) {
             throw new ServletException("Erreur lors de l'affichage du panier", e);
         } finally {
+
             if (connection != null) {
                 try {
                     connection.close();

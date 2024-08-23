@@ -16,6 +16,7 @@ body {
     background-color: #82c1cc;
     display: flex;
     align-items: stretch;
+    border-radius: 5px;
 }
 
 table {

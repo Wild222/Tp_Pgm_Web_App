@@ -8,8 +8,9 @@ public class TypeAnimal {
     private int quantiteDisponible;
     private double prixAnimal;
     private String imageUrl;
+    private String type;
 
-    public TypeAnimal(int id, String nom, String sexe, int quantite, int quantiteDisponible, double prixAnimal, String imageUrl) {
+    public TypeAnimal(int id, String nom, String sexe, int quantite, int quantiteDisponible, double prixAnimal, String imageUrl, String type) {
         this.id = id;
         this.nom = nom;
         this.sexe = sexe;
@@ -17,6 +18,7 @@ public class TypeAnimal {
         this.quantiteDisponible = quantiteDisponible;
         this.prixAnimal = prixAnimal;
         this.imageUrl = imageUrl;
+        this.type = type;
     }
 
     public TypeAnimal() {
@@ -79,15 +81,25 @@ public class TypeAnimal {
         this.quantite = quantite;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Override
     public String toString() {
         return "TypeAnimal{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", sexe='" + sexe + '\'' +
+                ", quantite=" + quantite +
                 ", quantiteDisponible=" + quantiteDisponible +
                 ", prixAnimal=" + prixAnimal +
                 ", imageUrl='" + imageUrl + '\'' +
+                ", type='" + type + '\'' +
                 '}';
     }
 }

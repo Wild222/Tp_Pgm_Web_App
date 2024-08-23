@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title>GevStack - Order confirm animation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;display=swap'>
     <link rel="stylesheet" href="css/checkout.css">
     <link rel="stylesheet" href="css/navbar.css">
@@ -22,13 +22,20 @@
     <nav>
         <ul>
             <li><a href="acceuil.jsp">Accueil</a></li>
-            <li><a href="#">Produit</a></li>
             <li><a href="AfficherAnimalServlet">Animal</a></li>
             <li><a href="afficherPanier.jsp">Panier</a></li>
-            <li><a href="#">Retour au Paiement</a></li>
+            <li>
+                <div id="basketCounterContainer">
+                    <a style="color: white;" href="AfficherPanierServlet">
+                        <i class="fas fa-shopping-cart">                    &nbsp;
+                            <span id="basketCounter"><c:out value="${sessionScope.quantite}"/></span>
+                        </i>
+                    </a>
+                </div>
+            </li>
         </ul>
     </nav>
-
+    <form action="AjouterClientServlet" method="post">
     <div class="component">
         <div class="form-container">
             <table border="1">
@@ -38,15 +45,17 @@
                 </tr>
                 </thead>
                 <tbody>
+
                 <tr>
-                    <td><input type="text" placeholder="Nom"/></td>
+                    <td><input type="text" placeholder="Nom"  id="nom" name="nom"/></td>
                 </tr>
                 <tr>
-                    <td><input type="text" placeholder="Prénom"/></td>
+                    <td><input type="text" placeholder="Prénom" id="prenom" name="prenom"/></td>
                 </tr>
                 <tr>
-                    <td><input type="text" placeholder="Courriel"/></td>
+                    <td><input type="text" placeholder="Courriel" id="courriel" name="courriel"/></td>
                 </tr>
+
                 <thead>
                 <tr>
                     <th>Information Carte</th>
@@ -86,7 +95,7 @@
                 <tr>
                     <td class="boutonCheckout">
                         <!--Bouton trouver sur internet je l'aimais-->
-                        <button class="order">
+                        <button type="submit" class="order">
                             <span class="default">Terminer Votre Commande</span>
                             <span class="success">Commande Effectuer
                                 <svg viewbox="0 0 12 10">
@@ -115,7 +124,7 @@
             </div>
         </div>
     </div>
-
+    </form>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
 <script src="javaScript/checkout.js"></script>
 </div>

@@ -17,31 +17,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-//@WebServlet("/UpdateBBDServlet")
-//public class UpdateBBDServlet extends HttpServlet {
-
-    //    @Override
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-//
-//        Connection connection = null;
-//        DB_Connector dbConnector = new DB_Connector();
-//        connection = dbConnector.getConnection();
-//
-//        // Récupération de la quantité disponible depuis la base de données
-//        TypeAnimalDAO_JDBC animal = new TypeAnimalDAO_JDBC(connection);
-//        TypeAnimal typeAnimalId = animal.getTypeAnimalById(Integer.parseInt(produitId));
-//        int quantiteDisponible = typeAnimalId.getQuantiteDisponible();
-//
-//        // Calcul de la nouvelle quantité disponible
-//        int nouvelleQuantiteDisponible = quantiteDisponible - quantite;
-//        typeAnimalId.setQuantiteDisponible(nouvelleQuantiteDisponible);
-//
-//        // Mise à jour de la quantité disponible dans la base de données
-//        animal.updateTypeAnimalQuantiterParId(typeAnimalId, nouvelleQuantiteDisponible);
-//    }
-//}
-    @WebServlet("/UpdateBBDServlet")
+    @WebServlet(name = "UpdateBBDServlet", value = "/UpdateBBDServlet")
     public class UpdateBBDServlet extends HttpServlet {
 
         @Override
@@ -52,7 +28,10 @@ import java.util.List;
 
             TypeAnimalDAO_JDBC animalDAO = new TypeAnimalDAO_JDBC(connection);
 
-            // Récupération des paramètres du formulaire
+            /*
+            Met à jour la quantité disponible d'un animal dans le panier et
+            dans la base de données lorsque l'utilisateur appuie sur payer votre commande
+             */
             HttpSession session = request.getSession();
             List<PanierItem> panier = (List<PanierItem>) session.getAttribute("panier");
 
@@ -60,14 +39,15 @@ import java.util.List;
                 for (PanierItem item : panier) {
                     // Recherche de l'ID de l'animal dans le formulaire
                     String animalIdParam = "qty_" + item.getId();
-                    // Recherche de la quantité dans le formulaire
+                    // Recherche de la quantité dans le panier et avec l'Id de l'animal
                     String qtyParam = request.getParameter(animalIdParam);
 
                     if (qtyParam != null) {
                         int quantite = Integer.parseInt(qtyParam);
 
-                        // Récupérer l'animal par ID et mettre à jour la quantité
+                        // Récupérer l'animal par ID et met à jour la quantité
                         TypeAnimal typeAnimal = animalDAO.getTypeAnimalById(item.getId());
+
                         if (typeAnimal != null) {
                             int quantiteDisponible = typeAnimal.getQuantiteDisponible();
                             int nouvelleQuantiteDisponible = quantiteDisponible - quantite;
@@ -77,7 +57,7 @@ import java.util.List;
                                 response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Quantité demandée dépasse la quantité disponible pour l'animal ID: " + item.getId());
                                 return;
                             }
-
+                            // Mettre à jour la quantité
                             typeAnimal.setQuantiteDisponible(nouvelleQuantiteDisponible);
                             animalDAO.updateTypeAnimalQuantiterParId(typeAnimal, nouvelleQuantiteDisponible);
                         }
@@ -85,8 +65,15 @@ import java.util.List;
                 }
             }
 
-            // Rediriger vers la page de checkout
+            // Récupérer le montant total de taxe a payer
+            String totalParam = request.getParameter("total");
+            double totauxApTaxe = Double.parseDouble(totalParam);
+
+
+            // Rediriger vers la page de checkout avec le montant total
             response.sendRedirect("checkout.jsp");
+            // Invalider la session
+            request.getSession().invalidate();
         }
     }
 

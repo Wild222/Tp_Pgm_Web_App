@@ -1,5 +1,4 @@
 <!doctype html>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -8,16 +7,15 @@
 
 <fmt:setLocale value="${sessionScope.lang != null ? sessionScope.lang : 'fr_CA'}"/>
 <fmt:setBundle basename="ChoixLangue"/>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="${sessionScope.lang != null ? sessionScope.lang : 'fr_CA'}">
 <head>
-    <meta charset="UTF-8">
-    <script src="${pageContext.request.contextPath}/javaScript/afficherAnimal.js"></script>
-    <link rel="stylesheet" href="css/acceuil.css">
     <link rel="stylesheet" href="css/navbar.css">
-    <title><fmt:message key="page.acceuil"/></title>
+    <link rel="stylesheet" href="css/AuRevoir.css">
+    <title><fmt:message key="page.merci"/></title>
 </head>
 <body>
+
 <!--Barre de navigation-->
 <nav>
     <ul>
@@ -44,46 +42,10 @@
     </ul>
 </nav>
 
-<!-- Contenu de la page -->
-<header>
-    <div class="header">
-        <h1><fmt:message key="header.bienvenue"/></h1>
-        <p>
-        <h3><fmt:message key="header.description"/></h3>
-        </p>
-    </div>
-</header>
-
-<!-- Section images  -->
-<div class="containerImage">
-    <img src="images/chien1.jpg">
-    <img src="images/chat2.jpeg">
-    <img src="images/cheval2.jpeg">
-    <img src="images/lapin1.jpeg">
-    <img src="images/oiseau1.jpeg">
+<div class="text">
+    <h1><fmt:message key="page.auRevoir"/></h1>
+    <h2><fmt:message key="page.client"/></h2>
 </div>
 
-<!-- Section Animaux -->
-<form action="AfficherAnimalServlet" name="maFormAnimal">
-    <div class="container">
-        <img class="image" src="images/ima_1.jpeg" width="650" height="350" alt="ima_1"/>
-        <div class="text-container">
-            <h3><fmt:message key="section.animalDisp"/></h3>
-            <ul style="text-align: left;">
-                <li><fmt:message key="section.chien"/></li>
-                <li><fmt:message key="section.chat"/></li>
-                <li><fmt:message key="section.cheval"/></li>
-                <li><fmt:message key="section.oiseau"/></li>
-                <li><fmt:message key="section.hamster"/></li>
-                <li><fmt:message key="section.perroquet"/></li>
-            </ul>
-            <input class="bouton" type="submit" value="<fmt:message key='section.animalDisp.bouton'/>" name="typeAnimal"/>
-        </div>
-    </div>
-</form>
-<br>
-<br>
-
-<script src="${pageContext.request.contextPath}/javaScript/afficherAnimal.js"></script>
 </body>
 </html>
