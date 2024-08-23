@@ -87,7 +87,7 @@
                 <c:set var="totauxApTaxe" value="${total + tps + tvq}"/>
 
                 <tr>
-                    <td style="background-color: transparent" colspan="3"></td>
+                    <td colspan="3"></td>
                     <td>Total</td>
                     <td>
                         <!-- Formatage du total avant taxes -->
@@ -95,7 +95,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="background-color: transparent" colspan="3"></td>
+                    <td colspan="3"></td>
                     <td>TPS 5%</td>
                     <td>
                         <!-- Formatage de la TPS -->
@@ -103,7 +103,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="background-color: transparent" colspan="3"></td>
+                    <td colspan="3"></td>
                     <td>TVQ 9.9975%</td>
                     <td>
                         <!-- Formatage de la TVQ -->
@@ -111,7 +111,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="background-color: transparent" colspan="3"></td>
+                    <td colspan="3"></td>
                     <td>Total Avec les Taxes</td>
                     <td>
                         <!-- Formatage du total après taxes -->

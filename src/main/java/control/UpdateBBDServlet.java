@@ -72,6 +72,8 @@ import java.util.List;
 
             // Rediriger vers la page de checkout avec le montant total
             response.sendRedirect("checkout.jsp");
+            // Invalider la session
+            request.getSession().invalidate();
         }
     }
 

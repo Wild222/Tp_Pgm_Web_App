@@ -32,9 +32,9 @@ public class AjouterClientServlet extends HttpServlet {
          //Ajouter le client a la base de donnée
          clientDAO.ajouterClient(client);
 
-         //Rediriger vers la page de confirmation
-         RequestDispatcher dispatcher = request.getRequestDispatcher("AuRevoir.jsp");
-         dispatcher.forward(request, response);
+         response.sendRedirect("AuRevoir.jsp");
+          // Invalider la session
+          request.getSession().invalidate();
 
 
 

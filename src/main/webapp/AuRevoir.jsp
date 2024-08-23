@@ -42,8 +42,10 @@
     </ul>
 </nav>
 
+<div class="text">
+    <h1><fmt:message key="page.auRevoir"/></h1>
+    <h2><fmt:message key="page.client"/></h2>
+</div>
 
-<h1><fmt:message key="page.auRevoir"/></h1>
-<h2><fmt:message key="page.client"/></h2>
 </body>
 </html>
