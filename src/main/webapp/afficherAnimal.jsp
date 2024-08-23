@@ -15,7 +15,10 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/afficherAnimal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/navbar.css">
+
+
     <title>Cartes avec animaux</title>
+
 </head>
 <body>
 <!--Barre de naviguation-->
@@ -34,6 +37,10 @@
             </div>
         </li>
         <li>
+            <fmt:message key="nav.search">Rechercher par prix</fmt:message>
+            <input type="number" id="priceInput" placeholder=" " oninput="rechercherParPrix()">
+        </li>
+        <li>
             <form action="change-language" method="get">
                 <select name="lang" onchange="this.form.submit()">
                     <option value="fr_CA" style="text-align: center"
@@ -46,7 +53,9 @@
                     </option>
                 </select>
             </form>
-        </li>
+
+
+    </li>
     </ul>
 </nav>
 
@@ -73,8 +82,9 @@
         </div>
     </c:forEach>
 </div>
+<script src="${pageContext.request.contextPath}/javaScript/recherche.js" defer></script>
+    <script src="${pageContext.request.contextPath}/javaScript/afficherAnimal.js" defer></script>
 
-    <script src="${pageContext.request.contextPath}/javaScript/afficherAnimal.js"></script>
 
 </body>
 </html>
