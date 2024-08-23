@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 public class TypeAnimalDAO_JDBC implements ITypeAnimalDAO {
+    DB_Connector dbConnector = new DB_Connector();
 
     private Connection connection;
 
@@ -21,7 +22,7 @@ public class TypeAnimalDAO_JDBC implements ITypeAnimalDAO {
         return connection;
     }
 
-    @Override
+    @Override//Servlet AfficherAnimal
     public List<TypeAnimal> afficherTypeAnimal() {
         List<TypeAnimal> listeAnimaux = new ArrayList<>();
         try (PreparedStatement pst = connection.prepareStatement(SQL_BOX.AFFICHER_TOUT_TYPE_ANIMAL);
@@ -94,7 +95,7 @@ public class TypeAnimalDAO_JDBC implements ITypeAnimalDAO {
         }
     }
 
-    @Override
+    @Override//Servlet AfficherPanier
     public TypeAnimal getTypeAnimalById(int i) {
         try {
             PreparedStatement pst = this.connection.prepareStatement(SQL_BOX.RECHERCHER_TYPE_ANIMAL_PAR_ID);
@@ -118,22 +119,25 @@ public class TypeAnimalDAO_JDBC implements ITypeAnimalDAO {
 
         }
     }
-
-    public void getQuantiterDisponibleById(int i) {
+    @Override//Servlet UpdateBBDServlet
+    public TypeAnimal getQuantiterDisponibleById(int i) {
+        TypeAnimal typeAnimal = null;
         try {
             PreparedStatement pst = this.connection.prepareStatement(SQL_BOX.GET_QUANTITER_DISPONIBLE_BY_ID);
             pst.setInt(1, i);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
-                TypeAnimal typeAnimal = new TypeAnimal();
+                typeAnimal = new TypeAnimal();
                 typeAnimal.setQuantiteDisponible(rs.getInt("quantiteDisponible"));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return typeAnimal;
     }
 
-    @Override
+
+    @Override//Servlet UpdateBBDServlet
     public void updateTypeAnimalQuantiterParId(TypeAnimal typeAnimal, int i) {
         try {
             PreparedStatement pst = this.connection.prepareStatement(SQL_BOX.UPDATE_TYPE_ANIMAL_QUANTITER_BY_ID);

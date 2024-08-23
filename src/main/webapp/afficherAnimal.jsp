@@ -22,21 +22,15 @@
 <nav>
     <ul>
         <li><a href="acceuil.jsp"><fmt:message key="nav.acceuil"/></a></li>
-        <li><a href="#"><fmt:message key="nav.produit"/></a></li>
         <li><a href="#"><fmt:message key="nav.animal"/></a></li>
         <li><a href="afficherPanier.jsp"><fmt:message key="nav.panier"/></a></li>
-        <li><a href="checkout.jsp"><fmt:message key="nav.paiement"/></a></li>
-
         <li>
             <div id="basketCounterContainer">
                 <a style="color: white;" href="AfficherPanierServlet">
-                <i class="fas fa-shopping-cart">
-                    &nbsp;
+                <i class="fas fa-shopping-cart">                    &nbsp;
                     <span id="basketCounter"><c:out value="${sessionScope.quantite}"/></span>
-
                 </i>
                 </a>
-
             </div>
         </li>
         <li>

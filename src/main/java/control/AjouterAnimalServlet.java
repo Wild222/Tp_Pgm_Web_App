@@ -104,7 +104,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/AjouterAnimalServlet")
+@WebServlet(name = "AjouterAnimalServlet", value = "/AjouterAnimalServlet")
 public class AjouterAnimalServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

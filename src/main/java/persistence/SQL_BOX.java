@@ -1,19 +1,8 @@
 package persistence;
 
 public class SQL_BOX {
-//Produit Animal
-    public static final String RECHERCHER_PRODUIT_PAR_ID = "SELECT * FROM ProduitsAnimaux WHERE id = ?";
-
-    public static final String AFFICHER_TOUT_PRODUIT_ANIMAL = "SELECT * FROM ProduitsAnimaux";
-
-    public static final String RECHERCHER_PRODUIT_ANIMAL_BY_ID = "SELECT * FROM ProduitsAnimaux WHERE id = ?";
-
-    public static final String INSERT_PRODUIT_ANIMAL = "INSERT INTO ProduitsAnimaux (nom, description, prix, quantiteDisponible) VALUES (?, ?, ?, ?)";
-
-    public static final String MODIFIER_PRODUIT_ANIMAL = "UPDATE ProduitsAnimaux SET nom = ?, description = ?, prix = ?, quantiteDisponible = ? WHERE id = ?";
-
-    public static final String SUPPRIMER_PRODUIT_ANIMAL = "DELETE FROM ProduitsAnimaux WHERE id = ?";
-
+    //Client
+    public static final String AJOUTER_CLIENT = "INSERT INTO Client (nom, prenom, courriel) VALUES (?, ?, ?)";
     //Type Animal
     public static final String AFFICHER_TOUT_TYPE_ANIMAL = "SELECT * FROM TypeAnimal order by type asc";
 

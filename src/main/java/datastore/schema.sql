@@ -1,12 +1,10 @@
--- Création de la table pour les produits d'animaux
-CREATE TABLE ProduitsAnimaux (
-                                 id INT AUTO_INCREMENT PRIMARY KEY,
-                                 nom VARCHAR(100) NOT NULL,
-                                 description TEXT,
-                                 quantiteDisponible INT NOT NULL,
-                                 prix DOUBLE NOT NULL,
-                                 imageUrl VARCHAR(255)
+CREATE TABLE Client (
+                         id INT PRIMARY KEY AUTO_INCREMENT,
+                         nom VARCHAR(50) NOT NULL,
+                         prenom VARCHAR(50) NOT NULL,
+                         courriel VARCHAR(100) NOT NULL UNIQUE
 );
+
 
 -- Créer la table TypeAnimal
 CREATE TABLE TypeAnimal (

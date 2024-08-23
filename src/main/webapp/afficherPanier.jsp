@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/afficherPanier.css">
+    <script src="${pageContext.request.contextPath}/javaScript/afficherAnimal.js"></script>
     <link rel="stylesheet" href="css/navbar.css">
     <title>Votre Panier</title>
 </head>
@@ -14,10 +15,17 @@
 <nav>
     <ul>
         <li><a href="acceuil.jsp">Accueil</a></li>
-        <li><a href="#">Produit</a></li>
         <li><a href="AfficherAnimalServlet">Animal</a></li>
         <li><a href="#">Panier</a></li>
-        <li><a href="checkout.jsp">Retour au Paiement</a></li>
+        <li>
+            <div id="basketCounterContainer">
+                <a style="color: white;" href="AfficherPanierServlet">
+                    <i class="fas fa-shopping-cart">                    &nbsp;
+                        <span id="basketCounter"><c:out value="${sessionScope.quantite}"/></span>
+                    </i>
+                </a>
+            </div>
+        </li>
     </ul>
 </nav>
 <h1>Votre Panier</h1>
@@ -123,7 +131,9 @@
         <input type="hidden" name="animalId" value="${animal.id}"/>
         <input type="hidden" name="qty_${animal.id}" value="${animal.quantite}"/>
     </c:forEach>
-    <button type="submit"><a style="text-decoration-line: none; color: #212429" href="checkout.jsp?total=${totauxApTaxe}">Payer Votre Commande ICI</a></button>
+    <input type="hidden" name="total" value="${totauxApTaxe}"/>
+    <button type="submit">Payer Votre Commande ICI</button>
 </form>
+<script src="${pageContext.request.contextPath}/javaScript/afficherAnimal.js"></script>
 </body>
 </html>
