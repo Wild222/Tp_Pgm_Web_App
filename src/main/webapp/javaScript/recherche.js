@@ -11,7 +11,8 @@ function rechercherParPrix() {
     for (var i = 0; i < cardItems.length; i++) {
         // Obtenir le prix
         var priceText = cardItems[i].querySelector('.descript-dest').textContent;
-        var priceMatch = priceText.match(/Prix:\s*([\d.,]+)\$/);
+
+        var priceMatch = priceText.match(/(?:Price|Prix):\s*([\d.,]+)\$/);
 
         var price = priceMatch ? parseFloat(priceMatch[1].replace(',', '.')) : Infinity;
         console.log("Parsed price:", price);
