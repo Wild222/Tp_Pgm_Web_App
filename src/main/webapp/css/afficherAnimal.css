@@ -32,6 +32,14 @@ body {
     object-fit: cover;
     border-radius: 10px 10px 0 0;
 }
+/* Add spacing to the search li */
+nav ul li {
+    margin: 0 10px; /* Adjust the value to control spacing before and after */
+}
+
+nav ul li #priceInput {
+    margin-left: 5px; /* Optional: adds spacing between the label and input */
+}
 
 .descript-dest{
     font-size: 18px;
