@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.annotation.WebServlet;
 
-@WebServlet(name = "ChangeLanguageServlet", value = "/change-language")
+@WebServlet(name = "ChangeLanguageServlet", value = "/ChangeLanguageServlet")
 public class ChangeLanguageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

@@ -23,18 +23,9 @@
     <ul>
         <li><a href="#"><fmt:message key="nav.acceuil"/></a></li>
         <li><a href="AfficherAnimalServlet"><fmt:message key="nav.animal"/></a></li>
-        <li><a href="afficherPanier.jsp"><fmt:message key="nav.panier"/></a></li>
+        <li><a href="AfficherPanierServlet"><fmt:message key="nav.panier"/></a></li>
         <li>
-            <div id="basketCounterContainer">
-                <a style="color: white;" href="AfficherPanierServlet">
-                    <i class="fas fa-shopping-cart">                    &nbsp;
-                        <span id="basketCounter"><c:out value="${sessionScope.quantite}"/></span>
-                    </i>
-                </a>
-            </div>
-        </li>
-        <li>
-            <form action="change-language" method="get">
+            <form action="ChangeLanguageServlet" method="get">
                 <select name="lang" onchange="this.form.submit()">
                     <option value="fr_CA" <c:if test="${sessionScope.lang == 'fr_CA'}">selected</c:if>><fmt:message key="nav.select.francais" /></option>
                     <option value="en_US" <c:if test="${sessionScope.lang == 'en_US'}">selected</c:if>><fmt:message key="nav.select.anglais" /></option>

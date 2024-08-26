@@ -23,16 +23,7 @@
         <ul>
             <li><a href="acceuil.jsp">Accueil</a></li>
             <li><a href="AfficherAnimalServlet">Animal</a></li>
-            <li><a href="afficherPanier.jsp">Panier</a></li>
-            <li>
-                <div id="basketCounterContainer">
-                    <a style="color: white;" href="AfficherPanierServlet">
-                        <i class="fas fa-shopping-cart">                    &nbsp;
-                            <span id="basketCounter"><c:out value="${sessionScope.quantite}"/></span>
-                        </i>
-                    </a>
-                </div>
-            </li>
+            <li><a href="#">Panier</a></li>
         </ul>
     </nav>
     <form action="AjouterClientServlet" method="post">

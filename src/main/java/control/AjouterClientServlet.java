@@ -33,7 +33,7 @@ public class AjouterClientServlet extends HttpServlet {
          clientDAO.ajouterClient(client);
 
          response.sendRedirect("AuRevoir.jsp");
-          // Invalider la session
+          // Invalider la session pour ne pa revenir en arriere
           request.getSession().invalidate();
 
 

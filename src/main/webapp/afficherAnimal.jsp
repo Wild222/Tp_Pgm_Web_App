@@ -26,7 +26,7 @@
     <ul>
         <li><a href="acceuil.jsp"><fmt:message key="nav.acceuil"/></a></li>
         <li><a href="#"><fmt:message key="nav.animal"/></a></li>
-        <li><a href="afficherPanier.jsp"><fmt:message key="nav.panier"/></a></li>
+        <li><a href="AfficherPanierServlet"><fmt:message key="nav.panier"/></a></li>
         <li>
             <div id="basketCounterContainer">
                 <a style="color: white;" href="AfficherPanierServlet">
@@ -37,11 +37,13 @@
             </div>
         </li>
         <li>
-            <fmt:message key="nav.search">Rechercher par prix</fmt:message>
-            <input type="number" id="priceInput" placeholder=" " oninput="rechercherParPrix()">
+            <form action="AfficherAnimalServlet" method="get">
+            <fmt:message key="nav.recherche"/>
+            <input type="text" placeholder="Entrer un prix"  id="prixMax" name="prixMax"/>
+            <button type="submit">Rechercher</button>
         </li>
         <li>
-            <form action="change-language" method="get">
+            <form action="ChangeLanguageServlet" method="get">
                 <select name="lang" onchange="this.form.submit()">
                     <option value="fr_CA" style="text-align: center"
                             <c:if test="${sessionScope.lang == 'fr_CA'}">selected</c:if>>
@@ -78,7 +80,6 @@
                         &nbsp;
                         <input class="bouton" type="submit" value="<fmt:message key="section.typeAnimal.ajouter"/>" name="ajouter" />
                     </form>
-            <p>ID de l'animal: <c:out value="${animal.id}"/></p>
         </div>
     </c:forEach>
 </div>

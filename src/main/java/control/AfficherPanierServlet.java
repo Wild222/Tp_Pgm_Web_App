@@ -62,11 +62,11 @@ public class AfficherPanierServlet extends HttpServlet {
 
                     } else {
                         // Panier non trouvé
-                        System.out.println("Cart not found in session.");
+                        System.out.println("Le panier est vide");
                     }
                 } catch (NumberFormatException e) {
                     // Si animalId n'est pas un entier
-                    System.out.println("Invalid animal ID format: " + animalIdStr);
+                    System.out.println("L'Id de l'animal n'est pas un entier: " + animalIdStr);
                 }
             }
             request.setAttribute("animaux", animaux);

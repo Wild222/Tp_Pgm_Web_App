@@ -54,8 +54,8 @@ import java.util.List;
 
                             if (nouvelleQuantiteDisponible < 0) {
                                 // Quantité demandée dépasse la quantité disponible
-                                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Quantité demandée dépasse la quantité disponible pour l'animal ID: " + item.getId());
-                                return;
+                                System.out.println("Quantité demandée dépasse la quantité disponible pour l'animal ID: " + item.getId());
+
                             }
                             // Mettre à jour la quantité
                             typeAnimal.setQuantiteDisponible(nouvelleQuantiteDisponible);

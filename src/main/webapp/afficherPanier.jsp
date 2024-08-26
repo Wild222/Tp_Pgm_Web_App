@@ -17,15 +17,6 @@
         <li><a href="acceuil.jsp">Accueil</a></li>
         <li><a href="AfficherAnimalServlet">Animal</a></li>
         <li><a href="#">Panier</a></li>
-        <li>
-            <div id="basketCounterContainer">
-                <a style="color: white;" href="AfficherPanierServlet">
-                    <i class="fas fa-shopping-cart">                    &nbsp;
-                        <span id="basketCounter"><c:out value="${sessionScope.quantite}"/></span>
-                    </i>
-                </a>
-            </div>
-        </li>
     </ul>
 </nav>
 <h1>Votre Panier</h1>
@@ -54,7 +45,7 @@
                     <c:set var="animalTotal" value="${animal.prixAnimal * quantite}"/>
                     <c:set var="total" value="${total + animalTotal}"/>
                     <tr>
-                        <td>${animal.nom}<br><p>ID de l'animal: <c:out value="${animal.id}"/></p></td>
+                        <td>${animal.nom}<br></td>
                         <td>${animal.sexe}</td>
                         <td>
                             <fmt:formatNumber value="${animal.prixAnimal}" type="number" maxFractionDigits="2" minFractionDigits="2"/>

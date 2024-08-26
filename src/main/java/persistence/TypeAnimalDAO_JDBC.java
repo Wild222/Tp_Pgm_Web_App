@@ -46,53 +46,29 @@ public class TypeAnimalDAO_JDBC implements ITypeAnimalDAO {
     }
 
     @Override
-    public TypeAnimal rechercherTypeAnimal(String nom) {
-        TypeAnimal typeAnimal = null;
+    public List<TypeAnimal> rechercherTypeAnimalByPrix(double prixMaximum) {
+       List<TypeAnimal> typeAnimal = new ArrayList<>();
         try {
-            PreparedStatement pst = this.connection.prepareStatement(SQL_BOX.RECHERCHER_TYPE_ANIMAL_PAR_NOM);
-            pst.setString(1, nom);
+            PreparedStatement pst = this.connection.prepareStatement(SQL_BOX.RECHERCHER_TYPE_ANIMAL_PAR_PRIX);
+            pst.setDouble(1, prixMaximum);
             ResultSet rs = pst.executeQuery();
-            if (rs.next()) {
-                typeAnimal = new TypeAnimal();
-                typeAnimal.setNom(rs.getString("nom"));
+            while (rs.next()) {
+                TypeAnimal animal = new TypeAnimal();
+                animal.setId(rs.getInt("id"));
+                animal.setNom(rs.getString("nom"));
+                animal.setSexe(rs.getString("description"));
+                animal.setQuantiteDisponible(rs.getInt("quantiteDisponible"));
+                animal.setPrixAnimal(rs.getDouble("prixAnimal"));
+                animal.setImageUrl(rs.getString("imageUrl"));
+                animal.setType(rs.getString("type"));
+                typeAnimal.add(animal);
             }
+
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return typeAnimal;
-    }
-
-    @Override
-    public void ajouterTypeAnimal(TypeAnimal typeAnimal) {
-        try {
-            PreparedStatement pst = this.connection.prepareStatement(SQL_BOX.AJOUTER_TYPE_ANIMAL);
-            pst.setString(1, typeAnimal.getNom());
-            pst.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public void supprimerTypeAnimal(String nom) {
-        try {
-            PreparedStatement pst = this.connection.prepareStatement(SQL_BOX.SUPPRIMER_TYPE_ANIMAL_PAR_NOM);
-            pst.setString(1, nom);
-            pst.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public void modifierTypeAnimal(TypeAnimal typeAnimal) {
-        try {
-            PreparedStatement pst = this.connection.prepareStatement(SQL_BOX.MODIFIER_PRIX_ANIMAL);
-            pst.setDouble(1, typeAnimal.getPrixAnimal());
-            pst.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     @Override//Servlet AfficherPanier

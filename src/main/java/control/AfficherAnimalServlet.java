@@ -22,18 +22,32 @@ public class AfficherAnimalServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Connection connection = null;
         try {
-            // Créer une nouvelle instance de DB_Connector
             DB_Connector dbConnector = new DB_Connector();
             connection = dbConnector.getConnection();
 
-
-            // Lire les animaux depuis la base de données
             TypeAnimalDAO_JDBC afficherAnimal = new TypeAnimalDAO_JDBC(connection);
-            List<TypeAnimal> listeAnimaux = afficherAnimal.afficherTypeAnimal();
+            String prixMax = request.getParameter("prixMax");
+            List<TypeAnimal> listeAnimaux;
 
-            // Ajouter la liste d'animaux au contexte HTTP
-            request.setAttribute("listeAnimaux", listeAnimaux);
-            request.setAttribute("animaux", listeAnimaux);
+            // Rechercher les animaux par prix maximum
+            if (prixMax != null && !prixMax.trim().isEmpty()) {
+                try {
+                    // Convertir le prix maximum en double
+                    double prixMaximum = Double.parseDouble(prixMax);
+                    // Rechercher les animaux par prix maximum
+                    listeAnimaux = afficherAnimal.rechercherTypeAnimalByPrix(prixMaximum);
+                    // Afficher les animaux
+                    request.setAttribute("animaux", listeAnimaux);
+
+                } catch (NumberFormatException e) {
+                    request.setAttribute("error", "Le prix maximum doit être un nombre valide.");
+                }
+            } else {
+                // Sinon afficher tous les animaux
+                listeAnimaux = afficherAnimal.afficherTypeAnimal();
+                request.setAttribute("animaux", listeAnimaux);
+            }
+
             RequestDispatcher dispatcher = request.getRequestDispatcher("/afficherAnimal.jsp");
             dispatcher.forward(request, response);
         } catch (Exception e) {

@@ -111,7 +111,7 @@ public class AjouterAnimalServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String produitId = request.getParameter("animalId");
         if (produitId == null || produitId.isEmpty()) {
-            throw new ServletException("Le paramètre 'animalId' est requis.");
+            throw new ServletException("Le paramètre animalId est requis.");
         }
 
         // Vérifier si c'est une action de suppression
